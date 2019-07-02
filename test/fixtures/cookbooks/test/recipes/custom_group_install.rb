@@ -20,7 +20,7 @@ jlenv_plugin 'julia-build' do
   user 'vagrant'
 end
 
-jlenv_ruby '1.0.1' do
+jlenv_julia '1.0.1' do
   user 'vagrant'
 end
 

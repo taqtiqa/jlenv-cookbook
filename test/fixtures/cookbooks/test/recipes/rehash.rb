@@ -1,1 +1,1 @@
-rbenv_rehash 'defaultness'
+jlenv_rehash 'defaultness'
