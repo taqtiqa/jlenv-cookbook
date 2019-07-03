@@ -1,10 +1,12 @@
 #
-# Cookbook:: ruby_rbenv
+# Cookbook:: jlenv-cookbook
 # Resource:: plugin
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,16 +20,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-provides :rbenv_plugin
+provides :jlenv_plugin
 
 property :git_url, String, required: true
 property :git_ref, String, default: 'master'
 property :user,    String
 
-# https://github.com/rbenv/rbenv/wiki/Plugins
+# https://github.com/jlenv/jlenv/wiki/Plugins
 action :install do
   # If we pass in a username, we then to a plugin install to the users home_dir
-  # See chef_rbenv_script_helpers.rb for root_path
+  # See chef_jlenv_script_helpers.rb for root_path
   git "Install #{new_resource.name} plugin" do
     destination ::File.join(root_path, 'plugins', new_resource.name)
     repository new_resource.git_url
@@ -38,5 +40,5 @@ action :install do
 end
 
 action_class do
-  include Chef::Rbenv::Helpers
+  include Chef::Jlenv::Helpers
 end

@@ -21,9 +21,9 @@ _Store
 *.bk
 *.bkup
 
-# ruby/bundler files
-.ruby-version
-.ruby-gemset
+# julia/bundler files
+.julia-version
+.julia-gemset
 .rvmrc
 Gemfile.lock
 .bundle

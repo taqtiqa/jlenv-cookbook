@@ -1,6 +1,6 @@
 #
-# Cookbook:: ruby_rbenv
-# Library:: Chef::Rbenv::ShellHelpers
+# Cookbook:: jlenv-cookbook
+# Library:: Chef::Jlenv::ShellHelpers
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
 #
@@ -20,13 +20,13 @@
 #
 
 class Chef
-  module Rbenv
+  module Jlenv
     module Helpers
       def wrap_shim_cmd(cmd)
-        [%(export RBENV_ROOT="#{rbenv_root}"),
-         %(export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"),
-         %(export RBENV_VERSION="#{new_resource.rbenv_version}"),
-         %($RBENV_ROOT/shims/#{cmd}),
+        [%(export JLENV_ROOT="#{jlenv_root}"),
+         %(export PATH="$JLENV_ROOT/bin:$JLENV_ROOT/shims:$PATH"),
+         %(export JLENV_VERSION="#{new_resource.jlenv_version}"),
+         %($JLENV_ROOT/shims/#{cmd}),
         ].join(' && ')
       end
 
@@ -46,23 +46,23 @@ class Chef
 
       def binary
         prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
-        "#{prefix}#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
+        "#{prefix}#{root_path}/versions/#{new_resource.jlenv_version}/bin/gem"
       end
 
       def script_code
         script = []
-        script << %(export RBENV_ROOT="#{root_path}")
-        script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
-        script << %{eval "$(rbenv init -)"}
-        if new_resource.rbenv_version
-          script << %(export RBENV_VERSION="#{new_resource.rbenv_version}")
+        script << %(export JLENV_ROOT="#{root_path}")
+        script << %(export PATH="${JLENV_ROOT}/bin:$PATH")
+        script << %{eval "$(jlenv init -)"}
+        if new_resource.jlenv_version
+          script << %(export JLENV_VERSION="#{new_resource.jlenv_version}")
         end
         script << new_resource.code
         script.join("\n").concat("\n")
       end
 
       def script_environment
-        script_env = { 'RBENV_ROOT' => root_path }
+        script_env = { 'JLENV_ROOT' => root_path }
 
         script_env.merge!(new_resource.environment) if new_resource.environment
 
@@ -93,7 +93,7 @@ class Chef
         end
       end
 
-      def ruby_installed?
+      def julia_installed?
         if Array(new_resource.action).include?(:reinstall)
           return false
         elsif ::File.directory?(::File.join(root_path, 'versions', new_resource.version))

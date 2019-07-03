@@ -1,10 +1,12 @@
 #
-# Cookbook:: ruby_rbenv
+# Cookbook:: jlenv-cookbook
 # Resource:: system_install
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,12 +21,12 @@
 # limitations under the License.
 #
 
-# Install rbenv to a system wide location
-provides :rbenv_system_install
+# Install jlenv to a system wide location
+provides :jlenv_system_install
 
 property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,       String, default: 'master'
-property :global_prefix, String, default: '/usr/local/rbenv'
+property :global_prefix, String, default: '/usr/local/jlenv'
 property :update_rbenv,  [true, false], default: true
 
 action :install do
@@ -38,9 +40,9 @@ action :install do
     mode '0755'
   end
 
-  template '/etc/profile.d/rbenv.sh' do
-    cookbook 'ruby_rbenv'
-    source 'rbenv.sh.erb'
+  template '/etc/profile.d/jlenv.sh' do
+    cookbook 'jlenv-cookbook'
+    source 'jlenv.sh.erb'
     owner 'root'
     mode '0755'
     variables(global_prefix: new_resource.global_prefix)
@@ -50,8 +52,8 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     action :checkout if new_resource.update_rbenv == false
-    notifies :run, 'ruby_block[Add rbenv to PATH]', :immediately
-    notifies :run, 'bash[Initialize system rbenv]', :immediately
+    notifies :run, 'julia_block[Add jlenv to PATH]', :immediately
+    notifies :run, 'bash[Initialize system jlenv]', :immediately
   end
 
   directory "#{new_resource.global_prefix}/plugins" do
@@ -59,21 +61,21 @@ action :install do
     mode '0755'
   end
 
-  # Initialize rbenv
-  ruby_block 'Add rbenv to PATH' do
+  # Initialize jlenv
+  julia_block 'Add jlenv to PATH' do
     block do
       ENV['PATH'] = "#{new_resource.global_prefix}/shims:#{new_resource.global_prefix}/bin:#{ENV['PATH']}"
     end
     action :nothing
   end
 
-  bash 'Initialize system rbenv' do
-    code %(PATH="#{new_resource.global_prefix}/bin:$PATH" rbenv init -)
-    environment('RBENV_ROOT' => new_resource.global_prefix)
+  bash 'Initialize system jlenv' do
+    code %(PATH="#{new_resource.global_prefix}/bin:$PATH" jlenv init -)
+    environment('JLENV_ROOT' => new_resource.global_prefix)
     action :nothing
   end
 end
 
 action_class do
-  include Chef::Rbenv::Helpers
+  include Chef::Jlenv::Helpers
 end

@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the ruby_rbenv cookbook.
 
+## 0.1.0 (2019-07-03)
+
+### NOTICE: Cookbook has been ported to Julia
+
+- Renamed to jlenv-cookbook and uploaded to Supermarket.
+- Updated Circle-CI config to run integration tests using kitchen-docker
+
+
 ## 2.1.2 (2018-11-09)
 
 - Fix `TypeError: no implicit conversion of nil into String` for `mac_os_x` platforms

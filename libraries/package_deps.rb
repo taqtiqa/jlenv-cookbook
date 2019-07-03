@@ -1,29 +1,29 @@
 class Chef
-  module Rbenv
+  module Jlenv
     module PackageDeps
-      def install_ruby_dependencies
+      def install_julia_dependencies
         case ::File.basename(new_resource.version)
-        when /^jruby-/
-          package jruby_package_deps
+        when /^jjulia-/
+          package jjulia_package_deps
         else
           package_deps.each do |deps|
             package deps
           end
         end
 
-        ensure_java_environment if new_resource.version =~ /^jruby-/
+        ensure_java_environment if new_resource.version =~ /^jjulia-/
       end
 
       def ensure_java_environment
         resource_collection.find(
-          'ruby_block[update-java-alternatives]'
+          'julia_block[update-java-alternatives]'
         ).run_action(:create)
       rescue Chef::Exceptions::ResourceNotFound
         # have pity on my soul
         Chef::Log.info 'The java cookbook does not appear to in the run_list.'
       end
 
-      def jruby_package_deps
+      def jjulia_package_deps
         case node['platform_family']
         when 'rhel', 'fedora', 'amazon'
           %w(make gcc-c++)

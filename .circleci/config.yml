@@ -1,7 +1,7 @@
 ---
 version: 2.1
 orbs:
-  kitchen: sous-chefs/kitchen@1.0.1
+  kitchen: jlenv/kitchen@1.0.1
 
 workflows:
   kitchen:
@@ -57,13 +57,13 @@ workflows:
           platform: centos-7
           requires: [lint, danger]
       - kitchen/dokken-single:
-          name: gem
-          suite: gem
+          name: pkg
+          suite: pkg
           platform: centos-7
           requires: [lint, danger]
       - kitchen/dokken-single:
-          name: ruby-uninstall
-          suite: ruby-uninstall
+          name: julia-uninstall
+          suite: julia-uninstall
           platform: ubuntu-1804
           requires: [lint, danger]
       - kitchen/dokken-single:

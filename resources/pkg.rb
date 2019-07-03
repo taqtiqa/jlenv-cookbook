@@ -1,12 +1,14 @@
 #
-# Cookbook:: ruby_rbenv
-# Resource:: gem
+# Cookbook:: jlenv-cookbook
+# Resource:: pkg
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
-# Author:: Dan Webb <dan.webb.damacus.io>
+# Author:: Dan Webb <dan.webb@damacus.io>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2011-2018, Fletcher Nichol
 # Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,9 +23,9 @@
 # limitations under the License.
 #
 
-provides :rbenv_gem
-# Standard Gem Package Options
-# https://docs.chef.io/resource_gem_package.html#properties
+provides :jlenv_package
+# Standard Package Options
+# https://docs.chef.io/resource_package.html#properties
 property :clear_sources,          [true, false]
 property :include_default_source, [true, false], default: true
 property :ignore_failure,         [true, false], default: false
@@ -39,11 +41,11 @@ property :rbenv_version,          String, required: true
 default_action :install
 
 action :install do
-  gem_package new_resource.package_name do
+  pkg_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
     ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
-    gem_binary binary
+    pkg_binary binary
     options new_resource.options if new_resource.options
     package_name new_resource.package_name if new_resource.package_name
     source new_resource.source if new_resource.source
@@ -54,11 +56,11 @@ action :install do
 end
 
 action :purge do
-  gem_package new_resource.package_name do
+  pkg_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
     ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
-    gem_binary binary
+    pkg_binary binary
     options new_resource.options if new_resource.options
     package_name new_resource.package_name if new_resource.package_name
     source new_resource.source if new_resource.source
@@ -69,11 +71,11 @@ action :purge do
 end
 
 action :reconfig do
-  gem_package new_resource.package_name do
+  pkg_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
     ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
-    gem_binary binary
+    pkg_binary binary
     options new_resource.options if new_resource.options
     package_name new_resource.package_name if new_resource.package_name
     source new_resource.source if new_resource.source
@@ -85,11 +87,11 @@ action :reconfig do
 end
 
 action :remove do
-  gem_package new_resource.package_name do
+  pkg_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
     ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
-    gem_binary binary
+    pkg_binary binary
     options new_resource.options if new_resource.options
     package_name new_resource.package_name if new_resource.package_name
     source new_resource.source if new_resource.source
@@ -100,11 +102,11 @@ action :remove do
 end
 
 action :upgrade do
-  gem_package new_resource.package_name do
+  pkg_package new_resource.package_name do
     clear_sources new_resource.clear_sources if new_resource.clear_sources
     ignore_failure new_resource.ignore_failure if new_resource.ignore_failure
     include_default_source new_resource.include_default_source
-    gem_binary binary
+    pkg_binary binary
     options new_resource.options if new_resource.options
     package_name new_resource.package_name if new_resource.package_name
     source new_resource.source if new_resource.source
@@ -115,5 +117,5 @@ action :upgrade do
 end
 
 action_class do
-  include Chef::Rbenv::Helpers
+  include Chef::Jlenv::Helpers
 end
