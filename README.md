@@ -36,7 +36,7 @@ A `jlenv_system_install` or `jlenv_user_install` is required to be set so that j
 
 System wide installations of jlenv are supported by this cookbook, but discouraged by the jlenv maintainer, see [these][https://github.com/rbenv/rbenv/issues/38] [two][https://github.com/rbenv/rbenv/issues/306] issues in the rbenv repository.
 
-## Gem
+## Pkg
 
 Used to install a package into the selected jlenv environment.
 
@@ -44,8 +44,8 @@ Used to install a package into the selected jlenv environment.
 jlenv_package 'pkg_name' do
   options # Optional: Options to pass to the packagecommand e.g. '--no-rdoc --no-ri'
   source # Optional: source URL/location for gem.
-  timeout # Optional: Gem install timeout
-  version # Optional: Gem version to install
+  timeout # Optional: Pkg install timeout
+  version # Optional: Pkg version to install
   response_file # Optional: response file to reconfigure a gem
   jlenv_version # Required: Which jlenv version to install the packageto.
   user # Which user to install packageto. REQUIRED if you're using jlenv_user_install
@@ -57,7 +57,7 @@ end
 Sets the global julia version. The name of the resource is the version to set.
 
 ```julia
-jlenv_global '2.5.1' do
+jlenv_global '1.1.0' do
   user # Optional: if passed sets the users global version. Leave unset, to set the system global version
 end
 ```
@@ -82,24 +82,24 @@ If user is passed in, the plugin is installed to the users install of jlenv.
 
 ```julia
 jlenv_rehash 'rehash' do
-  user 'vagrant' # Optional: if passed rehashes the user Ruby otherwise rehashes the system jlenv
+  user 'vagrant' # Optional: if passed rehashes the user Julia otherwise rehashes the system jlenv
 end
 ```
 
-If user is passed in, the user Ruby is rehashed rather than the system Ruby.
+If user is passed in, the user Julia is rehashed rather than the system Julia.
 
-## Ruby
+## Julia
 
-Installs a given Ruby version to the system or user location.
+Installs a given Julia version to the system or user location.
 
 ```julia
-jlenv_julia '2.5.1' do
+jlenv_julia '1.1.0' do
   user # Optional, but recommended: If passed, the user to install jlenv to
   jlenv_action # Optional: the action to perform, 'install' (default), 'uninstall' etc
 end
 ```
 
-Shorter example `jlenv_julia '2.5.1'`
+Shorter example `jlenv_julia '1.1.0'`
 
 ## Script
 

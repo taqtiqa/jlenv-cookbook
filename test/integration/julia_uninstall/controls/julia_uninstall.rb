@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-global_system_julia = '2.5.1'
+global_system_julia = '1.1.0'
 
-control 'Ruby uninstall' do
-  title 'Ruby should be uninstalled'
+control 'Julia uninstall' do
+  title 'Julia should be uninstalled'
 
   desc "#{global_system_julia} should be uninstalled"
   describe bash('source /etc/profile.d/jlenv.sh && jlenv versions --bare') do

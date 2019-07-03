@@ -1,7 +1,7 @@
 name: jlenv
 title: jlenv profile
-maintainer: Sous Chefs
-copyright: Webb Agile Solutions Ltd.
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
 license: Apache-2.0
 summary: Verifies jlenv is installed correctly for a user & group
 version: 1.0.0

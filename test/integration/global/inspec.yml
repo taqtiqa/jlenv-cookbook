@@ -1,9 +1,9 @@
 name: jlenv
 title: jlenv profile
-maintainer: Sous Chefs
-copyright: Webb Agile Solutions Ltd.
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
 license: Apache-2.0
-summary: Verifies jlenv correctly sets the global Ruby version
+summary: Verifies jlenv correctly sets the global Julia version
 version: 1.0.0
 supports:
   - os-family: linux

@@ -25,7 +25,7 @@ _Store
 .julia-version
 .julia-gemset
 .rvmrc
-Gemfile.lock
+Pkgfile.lock
 .bundle
 *.gem
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-global_julia = '2.4.1'
+global_julia = '1.0.1'
 
 control 'Jlenv should be installed' do
   title 'Jlenv should be installed to the users home directory'
@@ -26,10 +26,10 @@ control 'julia-build plugin should be installed' do
   end
 end
 
-control 'Global Ruby' do
+control 'Global Julia' do
   title 'Jlenv should be installed globally'
 
-  desc "Can set global Ruby version to #{global_julia}"
+  desc "Can set global Julia version to #{global_julia}"
   describe bash('sudo -H -u vagrant bash -c "source /etc/profile.d/jlenv.sh && jlenv versions --bare"') do
     its('exit_status') { should eq 0 }
     its('stdout') { should include(global_julia) }

@@ -37,7 +37,7 @@ action :install do
 
   install_start = Time.now
 
-  Chef::Log.info("Building Ruby #{new_resource.version}, this could take a while...")
+  Chef::Log.info("Building Julia #{new_resource.version}, this could take a while...")
 
   jlenv_plugin 'julia-build' do
     git_url new_resource.julia_build_git_url

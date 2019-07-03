@@ -1,8 +1,8 @@
 name: jlenv
 title: jlenv profile
-maintainer: Sous Chefs
+maintainer: Taqtiqa LLC
 license: Apache-2.0
-summary: Verifies that Rubies can be uninstalled
+summary: Verifies that Julias can be uninstalled
 version: 1.0.0
 supports:
   - os-family: linux
