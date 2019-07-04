@@ -7,11 +7,11 @@
 
 ## Description
 
-Manages [jlenv][https://github.com/jlenv/jlenv] installed Julias.
+Manages [jlenv](https://github.com/jlenv/jlenv) installed Julias.
 
 ## Maintainers
 
-This cookbook is maintained by volunteers. Contributions and bug reports are welcome.
+This cookbook is maintained by volunteers. [All contributions and bug reports are welcome](./CONTRIBUTING).
 
 ## Requirements
 
