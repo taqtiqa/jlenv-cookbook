@@ -30,7 +30,7 @@ property :user,         String, name_property: true
 property :group,        String, default: lazy { user }
 property :home_dir,     String, default: lazy { ::File.expand_path("~#{user}") }
 property :user_prefix,  String, default: lazy { ::File.join(home_dir, '.jlenv') }
-property :update_rbenv, [true, false], default: true
+property :update_jlenv, [true, false], default: true
 
 action :install do
   package package_prerequisites
@@ -51,7 +51,7 @@ action :install do
   git new_resource.user_prefix do
     repository new_resource.git_url
     reference new_resource.git_ref
-    action :checkout if new_resource.update_rbenv == false
+    action :checkout if new_resource.update_jlenv == false
     user new_resource.user
     group new_resource.group
     notifies :run, 'julia_block[Add jlenv to PATH]', :immediately

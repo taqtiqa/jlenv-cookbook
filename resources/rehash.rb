@@ -27,7 +27,7 @@ provides :jlenv_rehash
 property :user, String
 
 action :run do
-  jlenv_script "jlenv rehash #{which_rbenv}" do
+  jlenv_script "jlenv rehash #{which_jlenv}" do
     code %(jlenv rehash)
     user new_resource.user if new_resource.user
     action :run

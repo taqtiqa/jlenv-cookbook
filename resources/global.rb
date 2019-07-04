@@ -42,7 +42,7 @@ property :root_path,     String, default: lazy {
 # e.g. "jlenv global" should return the version we set
 
 action :create do
-  jlenv_script "globals #{which_rbenv}" do
+  jlenv_script "globals #{which_jlenv}" do
     code "jlenv global #{new_resource.jlenv_version}"
     user new_resource.user if new_resource.user
     action :run

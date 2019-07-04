@@ -3,8 +3,10 @@
 # Library:: Chef::Jlenv::ShellHelpers
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2011-2017, Fletcher Nichol
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -40,7 +42,7 @@ class Chef
         end
       end
 
-      def which_rbenv
+      def which_jlenv
         "(#{new_resource.user || 'system'})"
       end
 

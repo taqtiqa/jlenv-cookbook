@@ -140,7 +140,7 @@ Installs jlenv to the system location, by default `/usr/local/jlenv`
 jlenv_system_install 'foo' do
   git_url # URL of the plugin repo you want to checkout
   git_ref # Optional: Git reference to checkout
-  update_rbenv # Optional: Keeps the git repo up to date
+  update_jlenv # Optional: Keeps the git repo up to date
 end
 ```
 

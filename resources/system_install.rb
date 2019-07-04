@@ -27,7 +27,7 @@ provides :jlenv_system_install
 property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
 property :git_ref,       String, default: 'master'
 property :global_prefix, String, default: '/usr/local/jlenv'
-property :update_rbenv,  [true, false], default: true
+property :update_jlenv,  [true, false], default: true
 
 action :install do
   node.run_state['root_path'] ||= {}
@@ -51,7 +51,7 @@ action :install do
   git new_resource.global_prefix do
     repository new_resource.git_url
     reference new_resource.git_ref
-    action :checkout if new_resource.update_rbenv == false
+    action :checkout if new_resource.update_jlenv == false
     notifies :run, 'julia_block[Add jlenv to PATH]', :immediately
     notifies :run, 'bash[Initialize system jlenv]', :immediately
   end

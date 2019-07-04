@@ -58,7 +58,7 @@ action :install do
   command << " #{new_resource.version}"
   command << ' --verbose' if new_resource.verbose
 
-  jlenv_script "#{command} #{which_rbenv}" do
+  jlenv_script "#{command} #{which_jlenv}" do
     code command
     user new_resource.user if new_resource.user
     environment new_resource.environment if new_resource.environment

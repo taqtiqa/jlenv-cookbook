@@ -3,35 +3,14 @@ class Chef
     module PackageDeps
       def install_julia_dependencies
         case ::File.basename(new_resource.version)
-        when /^jjulia-/
-          package jjulia_package_deps
+        when /^special-julia-/
+          # call another package install method
         else
           package_deps.each do |deps|
             package deps
           end
         end
-
         ensure_java_environment if new_resource.version =~ /^jjulia-/
-      end
-
-      def ensure_java_environment
-        resource_collection.find(
-          'julia_block[update-java-alternatives]'
-        ).run_action(:create)
-      rescue Chef::Exceptions::ResourceNotFound
-        # have pity on my soul
-        Chef::Log.info 'The java cookbook does not appear to in the run_list.'
-      end
-
-      def jjulia_package_deps
-        case node['platform_family']
-        when 'rhel', 'fedora', 'amazon'
-          %w(make gcc-c++)
-        when 'debian'
-          %w(make g++)
-        when 'freebsd'
-          %w(alsa-lib bash dejavu expat fixesproto fontconfig freetype2 gettext-runtime giflib indexinfo inputproto java-zoneinfo javavmwrapper kbproto libICE libSM libX11 libXau libXdmcp libXext libXfixes libXi libXrender libXt libXtst libfontenc libpthread-stubs libxcb libxml2 mkfontdir mkfontscale openjdk8 recordproto renderproto xextproto xproto)
-        end
       end
 
       def package_deps
