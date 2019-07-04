@@ -1,4 +1,5 @@
 # Chef ruby_rbenv Cookbook
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/ruby_rbenv.svg)](https://supermarket.chef.io/cookbooks/ruby_rbenv)
 [![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/ruby_rbenv/master.svg)](https://circleci.com/gh/sous-chefs/ruby_rbenv)
@@ -166,6 +167,11 @@ Pull requests are very welcome! Make sure your patches are well tested.
 
 ## Contributors
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="http://blog.taqtiqa.com"><img src="https://avatars1.githubusercontent.com/u/1468258?v=4" width="100px;" alt="Mark Van de Vyver"/><br /><sub><b>Mark Van de Vyver</b></sub></a><br /><a href="#infra-taqtiqa-mark" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/taqtiqa-mark/jlenv-cookbook/commits?author=taqtiqa-mark" title="Tests">⚠️</a> <a href="https://github.com/taqtiqa-mark/jlenv-cookbook/commits?author=taqtiqa-mark" title="Code">💻</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 This project exists thanks to all the people who [contribute.](https://opencollective.com/sous-chefs/contributors.svg?width=890&button=false)
 
 ### Backers
