@@ -3,10 +3,11 @@
 [![Cookbook Version](https://img.shields.io/cookbook/v/jlenv-cookbook.svg)](https://supermarket.chef.io/cookbooks/jlenv-cookbook)
 [![Build Status](https://img.shields.io/circleci/project/github/jlenv/jlenv-cookbook/master.svg)](https://circleci.com/gh/jlenv/jlenv-cookbook)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CircleCI](https://circleci.com/gh/taqtiqa-mark/jlenv-cookbook.svg?style=svg)](https://circleci.com/gh/taqtiqa-mark/jlenv-cookbook)
 
 ## Description
 
-Manages [jlenv][https://github.com/jlenv] and its installed Julias.
+Manages [jlenv][https://github.com/jlenv/jlenv] installed Julias.
 
 ## Maintainers
 
@@ -25,6 +26,7 @@ This cookbook requires Chef 13.0+.
 - macOS (not currently tested)
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)
 - openSUSE and openSUSE leap
+- Windows (not supported)
 
 # Usage
 
@@ -32,9 +34,12 @@ This cookbook requires Chef 13.0+.
 
 Example installations are provided in `test/fixtures/cookbooks/test/recipes/`.
 
-A `jlenv_system_install` or `jlenv_user_install` is required to be set so that jlenv knows which version you want to use, and is installed on the system.
+A `jlenv_user_install` is required to be set so that jlenv knows which version you want to use, and is installed on the system.
 
-System wide installations of jlenv are supported by this cookbook, but discouraged by the jlenv maintainer, see [these][https://github.com/rbenv/rbenv/issues/38] [two][https://github.com/rbenv/rbenv/issues/306] issues in the rbenv repository.
+#### NOTE:
+> System wide installations of jlenv are discouraged by the jlenv maintainer.
+
+However they are supported by this cookbook, see [these][https://github.com/rbenv/rbenv/issues/38] [two][https://github.com/rbenv/rbenv/issues/306] issues in the rbenv repository for the reasons why.
 
 ## Pkg
 
@@ -54,7 +59,7 @@ end
 
 ## Global
 
-Sets the global julia version. The name of the resource is the version to set.
+Sets the global Julia version. The name of the resource is the version to set.
 
 ```julia
 jlenv_global '1.1.0' do
@@ -163,31 +168,9 @@ This cookbook takes advantage of managing profile fragments in an `/etc/profile.
 Pull requests are very welcome! Make sure your patches are well tested.
 
 ## Contributors
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table><tr><td align="center"><a href="http://blog.taqtiqa.com"><img src="https://avatars1.githubusercontent.com/u/1468258?v=4" width="100px;" alt="Mark Van de Vyver"/><br /><sub><b>Mark Van de Vyver</b></sub></a><br /><a href="#infra-taqtiqa-mark" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/taqtiqa-mark/jlenv-cookbook/commits?author=taqtiqa-mark" title="Tests">⚠️</a> <a href="https://github.com/taqtiqa-mark/jlenv-cookbook/commits?author=taqtiqa-mark" title="Code">💻</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-This project exists thanks to all the people who [contribute.](https://opencollective.com/sous-chefs/contributors.svg?width=890&button=false)
-
-### Backers
-
-Thank you to all our backers!
-
-![https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40)
-
-### Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
-
-![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/2/website](https://opencollective.com/sous-chefs/sponsor/2/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/3/website](https://opencollective.com/sous-chefs/sponsor/3/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/4/website](https://opencollective.com/sous-chefs/sponsor/4/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/5/website](https://opencollective.com/sous-chefs/sponsor/5/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/6/website](https://opencollective.com/sous-chefs/sponsor/6/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/7/website](https://opencollective.com/sous-chefs/sponsor/7/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/8/website](https://opencollective.com/sous-chefs/sponsor/8/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/9/website](https://opencollective.com/sous-chefs/sponsor/9/avatar.svg?avatarHeight=100)
+This project exists thanks to all the people who contribute.

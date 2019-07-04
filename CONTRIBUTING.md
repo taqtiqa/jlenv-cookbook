@@ -3,9 +3,16 @@
 We are glad you want to contribute to the sysctl cookbook! The first
 step is the desire to improve the project.
 
+## Recognizing All Contributors
+This project follows the [All Contributors](https://allcontributors.org/docs/en/overview) specification for recognizing contributors to an open source project in a way that recognizes different types of contributions, not just code.
+
+### Adding a contributor
+Contributors are encouraged to add themselves to the list using the [All Contributors (Git Hub) bot](https://allcontributors.org/docs/en/bot/overview).  
+See the bot [usage instructions](https://allcontributors.org/docs/en/bot/usage)).
+
 ## Quick-contribute
 
-* Create an issue on the github [issue tracker](https://github.com/sous-chefs/sysctl/issues)
+* Create an issue on the github [issue tracker](https://github.com/jlenv/jlenv/issues)
 * Link to your patch as a rebased git branch or pull request from the ticket
 
 We regularly review contributions and will get back to you if we have
