@@ -9,8 +9,10 @@ workflows:
       - kitchen/danger:
           name: danger
           context: Danger
-      - kitchen/lint:
-          name: lint
+      - kitchen/mdlint:
+          name: mdlint
+      - kitchen/yamllint:
+          name: yamllint
       - kitchen/dokken-single:
           suite: global
           platform: debian-8
