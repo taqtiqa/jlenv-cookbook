@@ -162,8 +162,8 @@ This cookbook takes advantage of managing profile fragments in an `/etc/profile.
 
 ## Development
 
-- Source hosted at [GitHub][repo]
-- Report issues/Questions/Feature requests on [GitHub Issues][issues]
+- Source hosted at [GitHub][https://github.com/jlenv/jlenv-cookbook]
+- Report issues/Questions/Feature requests on [GitHub Issues][https://github.com/jlenv/jlenv-cookbook/issues]
 
 Pull requests are very welcome! Make sure your patches are well tested.
 
