@@ -41,3 +41,4 @@ workflows:
           name: custom-group
           suite: custom-group-install-centos-7
           requires: [mdlint, yamllint, danger]
+          
