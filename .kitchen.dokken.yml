@@ -1,4 +1,4 @@
----
+  ---
 driver:
   name: dokken
   privileged: true
@@ -20,16 +20,16 @@ platforms:
     image: dokken/debian-8
     pid_one_command: /sbin/init
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install sudo -y
 
 - name: debian-9
   driver:
     image: dokken/debian-9
     pid_one_command: /bin/systemd
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install sudo -y
 
 - name: centos-6
   driver:
@@ -57,20 +57,20 @@ platforms:
     image: dokken/ubuntu-16.04
     pid_one_command: /bin/systemd
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install sudo -y
 
 - name: ubuntu-18.04
   driver:
     image: dokken/ubuntu-18.04
     pid_one_command: /bin/systemd
     intermediate_instructions:
-       - RUN /usr/bin/apt-get update
-       - RUN /usr/bin/apt-get install sudo -y
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install sudo -y
 
 - name: opensuse-leap
   driver:
     image: dokken/opensuse-leap
     pid_one_command: /bin/systemd
     intermediate_instructions:
-    - RUN zypper --non-interactive install sudo
+      - RUN zypper --non-interactive install sudo
