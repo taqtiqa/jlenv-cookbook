@@ -4,7 +4,7 @@
 # Number of days of inactivity before a closed issue or pull request is locked
 daysUntilLock: 365
 
-# Issues and pull requests with these labels will not be locked. Set to `[]` 
+# Issues and pull requests with these labels will not be locked. Set to `[]`
 # to disable
 exemptLabels: []
 
