@@ -48,7 +48,7 @@ downloading the branch.
 
 ## Functional and Unit Tests
 
-This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/). 
+This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/).
 It uses serverspec to run integration tests after the node has been
 converged to verify that the state of the node.
 

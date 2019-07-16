@@ -9,7 +9,6 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 - Renamed to jlenv-cookbook and uploaded to Supermarket.
 - Updated Circle-CI config to run integration tests using kitchen-docker
 
-
 ## 2.1.2 (2018-11-09)
 
 - Fix `TypeError: no implicit conversion of nil into String` for `mac_os_x` platforms
@@ -219,7 +218,7 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## 0.7.0 (2012-11-21)
 
-- Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create 
+- Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create
   `/etc/profile.d` on system-wide and add note for Mac. ([@fnichol])
 - Pull request [#20](https://github.com/fnichol/chef-rbenv/pull/20): Set an
   attribute to create profile.d for user install. ([@jtimberman])
@@ -236,19 +235,19 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## 0.6.8 (2012-05-06)
 
-- Add official hook resource `log[rbenv-post-init-*]` for inter-cookbook 
+- Add official hook resource `log[rbenv-post-init-*]` for inter-cookbook
   integration. ([@fnichol])
 
 ## 0.6.6 (2012-05-04)
 
-- Fix FC022: Resource condition within loop may not behave as expected. 
+- Fix FC022: Resource condition within loop may not behave as expected.
   ([@fnichol])
 - Add plaform equivalents in default attrs (FC024). ([@fnichol])
 - Ensure update-java-alternatives is called before JRuby is built. ([@fnichol])
-- Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add 
+- Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add
   `/etc/profile.d/rbenv.sh` support for user installs. ([@thoughtless])
 - Add TravisCI to run Foodcritic linter. ([@fnichol])
-- Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README 
+- Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README
   proofreading. ([@jdsiegel])
 - README updates. ([@fnichol])
 - Confirm debian platform support. ([@fnichol])
@@ -261,8 +260,8 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## 0.6.2 (2012-02-22)
 
-- Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1), 
-  [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in 
+- Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1),
+  [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in
   RbenvRubygems to avoid libraries load ordering issues. ([@fnichol])
 - Pull request [#5](https://github.com/fnichol/chef-rbenv/pull/5): Include user
   setting in rehash calls. ([@magnetised])
