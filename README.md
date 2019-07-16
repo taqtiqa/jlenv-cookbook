@@ -11,7 +11,7 @@ Manages [jlenv](https://github.com/jlenv/jlenv) installed Julias.
 
 ## Maintainers
 
-This cookbook is maintained by volunteers. 
+This cookbook is maintained by volunteers.
 [All contributions and bug reports are welcome](./CONTRIBUTING).
 
 ## Requirements
@@ -42,8 +42,8 @@ you want to use, and is installed on the system.
 | System wide installations of jlenv are discouraged by the jlenv maintainer.|
 |---|
 
-However they are supported by this cookbook, see 
-(these)[https://github.com/rbenv/rbenv/issues/38/] 
+However they are supported by this cookbook, see
+(these)[https://github.com/rbenv/rbenv/issues/38/]
 (two)[https://github.com/rbenv/rbenv/issues/306/] issues in the rbenv repository
 for the reasons why.
 
@@ -69,13 +69,13 @@ Sets the global Julia version. The name of the resource is the version to set.
 
 ```julia
 jlenv_global '1.1.0' do
-  user # Optional: Sets the users global version. 
+  user # Optional: Sets the users global version.
        # Leave unset, to set the system global version.
 end
 ```
 
 If a user is passed in to this resource it sets the global version for the user,
-under the users `root_path` (usually `~/.jlenv/version`), otherwise it sets the 
+under the users `root_path` (usually `~/.jlenv/version`), otherwise it sets the
 system global version.
 
 ## Plugin
@@ -86,7 +86,7 @@ Installs a jlenv plugin.
 jlenv_plugin 'julia-build' do
   git_url # Git URL of the plugin
   git_ref # Git reference of the plugin
-  user # Optional: Install to the users jlenv. 
+  user # Optional: Install to the users jlenv.
        # Do not set, to set installs to the system jlenv.
 end
 ```
@@ -110,7 +110,7 @@ Installs a given Julia version to the system or user location.
 ```julia
 jlenv_julia '1.1.0' do
   user # Optional, but recommended: If passed, the user to install jlenv to
-  jlenv_action # Optional: Action to perform: 
+  jlenv_action # Optional: Action to perform:
                # 'install' (default), 'uninstall' etc.
 end
 ```
@@ -124,7 +124,7 @@ Runs a jlenv aware script.
 ```julia
 jlenv_script 'foo' do
   jlenv_version #jlenv version to run the script against
-  environment # Optional: Hash of environment variables in the form of 
+  environment # Optional: Hash of environment variables in the form of
               # ({"ENV_VARIABLE" => "VALUE"}).
   user # Optional: User to run as
   group # Optional: Group to run as
@@ -144,7 +144,7 @@ jlenv_script 'bundle package' do
 end
 ```
 
-Where `#{ENV["PATH"]}` appends the existing `PATH` to the end of the newly set 
+Where `#{ENV["PATH"]}` appends the existing `PATH` to the end of the newly set
 `PATH`.
 
 ## System_install
@@ -173,15 +173,15 @@ end
 
 ## System-Wide macOS Installation Note
 
-This cookbook takes advantage of managing profile fragments in an 
-`/etc/profile.d` directory, common on most Unix-flavored platforms. 
-Unfortunately, macOS does not support this idiom out of the box, so you may 
+This cookbook takes advantage of managing profile fragments in an
+`/etc/profile.d` directory, common on most Unix-flavored platforms.
+Unfortunately, macOS does not support this idiom out of the box, so you may
 need to [modify][mac_profile_d] your user profile.
 
 ## Development
 
 - Source hosted at [GitHub](https://github.com/jlenv/jlenv-cookbook/)
-- Report Issues/Questions/Feature requests on 
+- Report Issues/Questions/Feature requests on
   [GitHub Issues](https://github.com/jlenv/jlenv-cookbook/issues)
 
 Pull requests are very welcome! Make sure your patches are well tested.
