@@ -6,4 +6,4 @@ In addition, setup [Danger](https://github.com/danger/danger])
 ([Ruby](https://danger.systems/ruby/])
 [JavaScript](https://danger.systems/js/),
 [Swift](https://danger.systems/swift/),
-for (use in CI)[https://danger.systems/guides/getting_started.html].
+for [use in CI](https://danger.systems/guides/getting_started.html).
