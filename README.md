@@ -31,8 +31,6 @@ This cookbook requires Chef 13.0+.
 
 ## Usage
 
-**Please read**
-
 Example installations are provided in `test/fixtures/cookbooks/test/recipes/`.
 
 A `jlenv_user_install` is required to be set so that jlenv knows which version
@@ -43,8 +41,8 @@ you want to use, and is installed on the system.
 |---|
 
 However they are supported by this cookbook, see
-(these)[https://github.com/rbenv/rbenv/issues/38/]
-(two)[https://github.com/rbenv/rbenv/issues/306/] issues in the rbenv repository
+[these](https://github.com/rbenv/rbenv/issues/38/)
+[two](https://github.com/rbenv/rbenv/issues/306/) issues in the rbenv repository
 for the reasons why.
 
 ## Pkg

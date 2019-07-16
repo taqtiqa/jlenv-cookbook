@@ -4,10 +4,16 @@ We are glad you want to contribute to the sysctl cookbook! The first
 step is the desire to improve the project.
 
 ## Recognizing All Contributors
-This project follows the [All Contributors](https://allcontributors.org/docs/en/overview) specification for recognizing contributors to an open source project in a way that recognizes different types of contributions, not just code.
+
+This project follows the
+[All Contributors](https://allcontributors.org/docs/en/overview) specification
+for recognizing contributors to an open source project in a way that recognizes
+different types of contributions, not just code.
 
 ### Adding a contributor
-Contributors are encouraged to add themselves to the list using the [All Contributors (Git Hub) bot](https://allcontributors.org/docs/en/bot/overview).  
+
+Contributors are encouraged to add themselves to the list using the
+[All Contributors (Git Hub) bot](https://allcontributors.org/docs/en/bot/overview).
 See the bot [usage instructions](https://allcontributors.org/docs/en/bot/usage)).
 
 ## Quick-contribute
@@ -23,8 +29,8 @@ any suggestions or concerns.
 You should submit your patch as a git branch named after the change.
 
 It is a best practice to have your commit message have a _summary
-line_, followed by an empty line and then a brief description of 
-the commit. This also helps other contributors understand the 
+line_, followed by an empty line and then a brief description of
+the commit. This also helps other contributors understand the
 purpose of changes to the code.
 
 Remember that not all users use Chef in the same way or on the same
@@ -42,8 +48,8 @@ downloading the branch.
 
 ## Functional and Unit Tests
 
-This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/). It
-uses serverspec to run integration tests after the node has been
+This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/). 
+It uses serverspec to run integration tests after the node has been
 converged to verify that the state of the node.
 
 Test kitchen should run completely without exception using the default
@@ -88,8 +94,9 @@ isn't trivial so we don't have to duplicate effort in testing. Chef
 10.14+ "doc" formatted output is sufficient.
 
 Please do indicate new platform (families) or platform versions in the
-commit message, and update the relevant ticket.  If a contribution adds 
-new platforms or platform versions, indicate such in the body of the commit message(s).
+commit message, and update the relevant ticket.  If a contribution adds
+new platforms or platform versions, indicate such in the body of the commit
+message(s).
 
 Please do use [foodcritic](http://www.foodcritic.io/) to
 lint-check the cookbook. Except FC007, it should pass all correctness
