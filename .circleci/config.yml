@@ -6,9 +6,9 @@ orbs:
 workflows:
   kitchen:
     jobs:
-      - kitchen/danger:
-          name: danger
-          context: Danger
+    #   - kitchen/danger:
+    #       name: danger
+    #       context: Danger
       - kitchen/mdlint:
           name: mdlint
       - kitchen/yamllint:
@@ -16,28 +16,35 @@ workflows:
       - kitchen/dokken:
           suite: global
           name: global
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           suite: global-opensuse-leap
           name: global-opensuse-leap
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: system-install-centos-7
           suite: system-install-centos-7
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: user-install-centos-7
           suite: user-install-centos-7
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: pkg-centos-7
           suite: pkg-centos-7
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: julia-uninstall-ubuntu-1804
           suite: julia-uninstall-ubuntu-1804
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: custom-group
           suite: custom-group-install-centos-7
-          requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
