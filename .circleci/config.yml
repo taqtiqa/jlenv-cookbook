@@ -7,8 +7,8 @@ orbs:
 workflows:
   kitchen:
     jobs:
-      - vagrant:
-          name: vagrant-installation
+      - install-vagrant:
+          name: vagrant
           steps:
             - cmds/get-pkg-check-install:
                 url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
