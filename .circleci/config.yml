@@ -8,11 +8,12 @@ workflows:
   kitchen:
     jobs:
       - vagrant:
-        steps:
-          - cmds/get-pkg-check-install:
-              url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
-              checksum: '415f50b93235e761db284c761f6a8240a6ef6762ee3ec7ff869d2bccb1a1cdf7'
-              verify_command: 'vagrant'
+          name: vagrant-installation
+          steps:
+            - cmds/get-pkg-check-install:
+                url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
+                checksum: '415f50b93235e761db284c761f6a8240a6ef6762ee3ec7ff869d2bccb1a1cdf7'
+                verify_command: 'vagrant'
     #   - kitchen/danger:
     #       name: danger
     #       context: Danger
@@ -23,7 +24,7 @@ workflows:
       - kitchen/dokken:
           suite: global
           name: global
-          requires: [mdlint, yamllint]
+          requires: [mdlint, yamllint, vagrant]
         #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           suite: global-opensuse-leap
@@ -48,7 +49,7 @@ workflows:
       - kitchen/dokken-single:
           name: julia-uninstall-ubuntu-1804
           suite: julia-uninstall-ubuntu-1804
-          requires: [mdlint, yamllint]
+          requires: [mdlint, yamllint, vagrant]
         #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: custom-group
