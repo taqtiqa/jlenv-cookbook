@@ -2,18 +2,22 @@
 version: 2.1
 orbs:
   kitchen: taqtiqa/kitchen@1.3.3
-  cmds: taqtiqa/commands@0.1.1
+  cmds: taqtiqa/commands@0.1.2
+
+jobs:
+  vagrant:
+    executor: kitchen/chef
+    steps:
+      - cmds/get-pkg-check-install:
+          url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
+          checksum: '415f50b93235e761db284c761f6a8240a6ef6762ee3ec7ff869d2bccb1a1cdf7'
+          verify_command: 'vagrant'
 
 workflows:
   kitchen:
     jobs:
-      - install-vagrant:
+      - vagrant:
           name: vagrant
-          steps:
-            - cmds/get-pkg-check-install:
-                url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
-                checksum: '415f50b93235e761db284c761f6a8240a6ef6762ee3ec7ff869d2bccb1a1cdf7'
-                verify_command: 'vagrant'
     #   - kitchen/danger:
     #       name: danger
     #       context: Danger
