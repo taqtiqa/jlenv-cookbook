@@ -26,7 +26,6 @@ _Store
 .julia-gemset
 .rvmrc
 Pkgfile.lock
-.bundle
 *.gem
 
 # YARD artifacts
