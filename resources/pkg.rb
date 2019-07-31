@@ -1,5 +1,5 @@
 #
-# Cookbook:: jlenv-cookbook
+# Cookbook:: jlenv
 # Resource:: pkg
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>

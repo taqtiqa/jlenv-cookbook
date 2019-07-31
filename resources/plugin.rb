@@ -1,5 +1,5 @@
 #
-# Cookbook:: jlenv-cookbook
+# Cookbook:: jlenv
 # Resource:: plugin
 #
 # Author:: Dan Webb <dan.webb@damacus.io>

@@ -1,5 +1,5 @@
 #
-# Cookbook:: jlenv-cookbook
+# Cookbook:: jlenv
 # Resource:: system_install
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
@@ -41,7 +41,7 @@ action :install do
   end
 
   template '/etc/profile.d/jlenv.sh' do
-    cookbook 'jlenv-cookbook'
+    cookbook 'jlenv'
     source 'jlenv.sh.erb'
     owner 'root'
     mode '0755'

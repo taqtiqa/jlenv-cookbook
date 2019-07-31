@@ -1,7 +1,7 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 
-describe 'jlenv-cookbook::user' do
+describe 'jlenv::user_install' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
   end

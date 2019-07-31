@@ -1,5 +1,5 @@
 #
-# Cookbook:: jlenv-cookbook
+# Cookbook:: jlenv
 # Library:: Chef::Jlenv::ShellHelpers
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>

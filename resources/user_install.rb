@@ -1,5 +1,5 @@
 #
-# Cookbook:: jlenv-cookbook
+# Cookbook:: jlenv
 # Resource:: user_install
 #
 # Author:: Dan Webb <dan.webb@damacus.io>
@@ -41,7 +41,7 @@ action :install do
   system_prefix = node.run_state['root_path']['system']
 
   template '/etc/profile.d/jlenv.sh' do
-    cookbook 'jlenv-cookbook'
+    cookbook 'jlenv'
     source 'jlenv.sh.erb'
     variables(global_prefix: system_prefix) if system_prefix
     owner 'root'

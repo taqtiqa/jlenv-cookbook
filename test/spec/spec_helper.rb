@@ -1,5 +1,5 @@
 require 'chefspec'
-require 'chefspec/berkshelf' # TODO: Policyfiles
+require 'chefspec/policyfile' # TODO: Policyfiles
 
 
 RSpec.configure do |config|
@@ -9,4 +9,5 @@ RSpec.configure do |config|
 
   config.platform = 'ubuntu'
   config.version = '18.04'
+  
 end

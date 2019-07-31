@@ -1,4 +1,4 @@
-name 'jlenv-cookbook'
+name 'jlenv'
 maintainer 'Mark Van de Vyver'
 maintainer_email 'mark@taqtiqa.com'
 issues_url 'https://github.com/jlenv/jlenv-cookbook/issues'
