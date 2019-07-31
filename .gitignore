@@ -21,6 +21,9 @@ _Store
 *.bk
 *.bkup
 
+# IDE
+.vscode
+
 # julia/bundler files
 .julia-version
 .julia-gemset
