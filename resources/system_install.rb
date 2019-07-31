@@ -52,7 +52,7 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     action :checkout if new_resource.update_jlenv == false
-    notifies :run, 'julia_block[Add jlenv to PATH]', :immediately
+    notifies :run, 'ruby_block[Add jlenv to PATH]', :immediately
     notifies :run, 'bash[Initialize system jlenv]', :immediately
   end
 
@@ -62,7 +62,7 @@ action :install do
   end
 
   # Initialize jlenv
-  julia_block 'Add jlenv to PATH' do
+  ruby_block 'Add jlenv to PATH' do
     block do
       ENV['PATH'] = "#{new_resource.global_prefix}/shims:#{new_resource.global_prefix}/bin:#{ENV['PATH']}"
     end

@@ -54,7 +54,7 @@ action :install do
     action :checkout if new_resource.update_jlenv == false
     user new_resource.user
     group new_resource.group
-    notifies :run, 'julia_block[Add jlenv to PATH]', :immediately
+    notifies :run, 'ruby_block[Add jlenv to PATH]', :immediately
   end
 
   %w(plugins shims versions).each do |d|
@@ -66,7 +66,7 @@ action :install do
   end
 
   # Initialize jlenv
-  julia_block 'Add jlenv to PATH' do
+  ruby_block 'Add jlenv to PATH' do
     block do
       ENV['PATH'] = "#{new_resource.user_prefix}/shims:#{new_resource.user_prefix}/bin:#{ENV['PATH']}"
     end
