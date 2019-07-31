@@ -17,7 +17,7 @@ jlenv_global '1.0.4'
 
 #####################################################################
 #
-# JuliaRegistries/General Hosted Repository 
+# JuliaRegistries/General Hosted Repository
 #
 #####################################################################
 
@@ -76,7 +76,7 @@ end
 
 #####################################################################
 #
-# Git Hosted Repository 
+# Git Hosted Repository
 #
 #####################################################################
 
@@ -115,7 +115,7 @@ jlenv_pkg 'Bare repository' do
   jlenv_version '1.1.0'
 end
 
-# Install latest for specific user 
+# Install latest for specific user
 jlenv_user_install 'vagrant'
 
 # Install a Julia to a user directory
