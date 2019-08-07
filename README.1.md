@@ -12,7 +12,7 @@ Manages [jlenv](https://github.com/jlenv/jlenv) installed Julias.
 ## Maintainers
 
 This cookbook is maintained by volunteers.
-[All contributions and bug reports are welcome](./CONTRIBUTING).
+[All contributions and bug reports are welcome.](./CONTRIBUTING).
 
 ## Requirements
 
@@ -37,19 +37,19 @@ A `jlenv_user_install` is required to be set so that jlenv knows which version
 you want to use, and is installed on the system.
 
 | **NOTE:** |
-| System wide installations of jlenv are discouraged by the jlenv maintainer.|
+| System wide installations of jlenv are discouraged.|
 |---|
 
-However they are supported by this cookbook, see
+However thsystem wide installs are supported by this cookbook, see
 [these](https://github.com/rbenv/rbenv/issues/38/)
 [two](https://github.com/rbenv/rbenv/issues/306/) issues in the rbenv repository
-for the reasons why.
+for the reasons why system wide installs can be problematic.
 
 ## Pkg
 
 Used to install a package into the selected jlenv environment.
 
-```julia
+```ruby
 jlenv_package 'pkg_name' do
   options # Optional: Options for the packagecommand e.g. '--no-rdoc --no-ri'
   source # Optional: source URL/location for gem.
@@ -65,7 +65,7 @@ end
 
 Sets the global Julia version. The name of the resource is the version to set.
 
-```julia
+```ruby
 jlenv_global '1.1.0' do
   user # Optional: Sets the users global version.
        # Leave unset, to set the system global version.
@@ -80,7 +80,7 @@ system global version.
 
 Installs a jlenv plugin.
 
-```julia
+```ruby
 jlenv_plugin 'julia-build' do
   git_url # Git URL of the plugin
   git_ref # Git reference of the plugin
@@ -93,7 +93,7 @@ If user is passed in, the plugin is installed to the users install of jlenv.
 
 ## Rehash
 
-```julia
+```ruby
 jlenv_rehash 'rehash' do
   user 'vagrant' # Optional: Rehash the user jlenv otherwise rehash system jlenv
 end
@@ -105,7 +105,7 @@ If user is passed in, the user Julia is rehashed rather than the system Julia.
 
 Installs a given Julia version to the system or user location.
 
-```julia
+```ruby
 jlenv_julia '1.1.0' do
   user # Optional, but recommended: If passed, the user to install jlenv to
   jlenv_action # Optional: Action to perform:
@@ -119,7 +119,7 @@ Shorter example `jlenv_julia '1.1.0'`
 
 Runs a jlenv aware script.
 
-```julia
+```ruby
 jlenv_script 'foo' do
   jlenv_version #jlenv version to run the script against
   environment # Optional: Hash of environment variables in the form of
@@ -134,7 +134,7 @@ end
 Note that environment overwrites the entire variable.
 For example. setting the `$PATH` variable can be done like this:
 
-```julia
+```ruby
 jlenv_script 'bundle package' do
   cwd node["bundle_dir"]
   environment ({"PATH" => "/usr/local/jlenv/shims:/usr/local/jlenv/bin:#{ENV["PATH"]}"})
@@ -149,7 +149,7 @@ Where `#{ENV["PATH"]}` appends the existing `PATH` to the end of the newly set
 
 Installs jlenv to the system location, by default `/usr/local/jlenv`
 
-```julia
+```ruby
 jlenv_system_install 'foo' do
   git_url # URL of the plugin repo you want to checkout
   git_ref # Optional: Git reference to checkout
@@ -161,7 +161,7 @@ end
 
 Installs jlenv to the user path, making jlenv available to that user only.
 
-```julia
+```ruby
 jlenv_user_install 'vagrant' do
   git_url # Optional: Git URL to checkout jlenv from.
   git_ref # Optional: Git reference to checkout e.g. 'master'
@@ -185,6 +185,8 @@ need to [modify][mac_profile_d] your user profile.
 Pull requests are very welcome! Make sure your patches are well tested.
 
 ## Contributors
+
+[All contributions and bug reports are welcome.](./CONTRIBUTING)
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
