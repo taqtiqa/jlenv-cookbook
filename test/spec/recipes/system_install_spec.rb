@@ -1,7 +1,6 @@
-require 'chefspec'
-require 'chefspec/berkshelf'
+require_relative '../spec_helper'
 
-describe 'jlenv::system' do
+describe 'test::system_install' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
   end
