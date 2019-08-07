@@ -4,7 +4,7 @@ class Chef
       def install_julia_dependencies
         case ::File.basename(new_resource.version)
         when /^special-julia-/
-          # call another package install method
+          puts 'call another package install method'
         else
           package_deps.each do |deps|
             package deps
