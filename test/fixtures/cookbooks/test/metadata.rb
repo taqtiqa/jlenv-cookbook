@@ -1,5 +1,5 @@
 name 'test'
-version '0.99.0'
+version '0.99.1'
 
 depends 'jlenv'
 

@@ -79,8 +79,8 @@ platforms:
 suites:
   - name: global
     provisioner:
-      policyfile: test/fixtures/cookbooks/test/Policyfile.rb
+      policyfile: test/fixtures/cookbooks/test/Policyfile_global.rb
     verifier:
       inspec_tests:
-        - test/spec/integration/global
+        - test/integration/global
     attributes:

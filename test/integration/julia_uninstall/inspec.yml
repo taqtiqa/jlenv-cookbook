@@ -3,7 +3,7 @@ name: jlenv
 title: jlenv profile
 maintainer: Taqtiqa LLC
 license: Apache-2.0
-summary: Verifies that Julias can be uninstalled
+summary: Verify that Julias can be uninstalled
 version: 1.0.0
 supports:
   - os-family: linux

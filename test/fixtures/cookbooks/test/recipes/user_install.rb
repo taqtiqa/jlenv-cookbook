@@ -1,8 +1,9 @@
 # Install jlenv and makes it avilable to the selected user
-version = '1.0.1'
 
-# Make sure that Vagarant user is on the box for dokken
-include_recipe 'test::dokken'
+# Ensure Vagrant user exists on test environment
+include_recipe 'test::default'
+
+version = '1.0.1'
 
 # Keeps the jlenv install upto date
 jlenv_user_install 'vagrant'
