@@ -24,7 +24,7 @@
 # Install jlenv to a system wide location
 provides :jlenv_system_install
 
-property :git_url,       String, default: 'https://github.com/rbenv/rbenv.git'
+property :git_url,       String, default: 'https://github.com/jlenv/jlenv.git'
 property :git_ref,       String, default: 'master'
 property :global_prefix, String, default: '/usr/local/jlenv'
 property :update_jlenv,  [true, false], default: true

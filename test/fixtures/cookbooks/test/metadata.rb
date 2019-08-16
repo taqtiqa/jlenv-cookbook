@@ -1,6 +1,6 @@
 name 'test'
-version '0.99.1'
+version '0.99.2'
 
 depends 'jlenv'
 
-recipe 'test::user_install', 'Provides an example for documentation purposes.'
+recipe 'test::default', 'Provides an example for documentation purposes.'

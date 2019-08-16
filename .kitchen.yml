@@ -77,9 +77,15 @@ platforms:
         - RUN zypper --non-interactive install sudo
 
 suites:
+  - name: system_install
+    provisioner:
+      policyfile: test/fixtures/cookbooks/test/system_install.pf.rb
+    verifier:
+      inspec_tests:
+        - test/integration/system_install
   - name: global
     provisioner:
-      policyfile: test/fixtures/cookbooks/test/global.pf
+      policyfile: test/fixtures/cookbooks/test/global.pf.rb
     verifier:
       inspec_tests:
         - test/integration/global
