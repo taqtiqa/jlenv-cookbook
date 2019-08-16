@@ -1,6 +1,6 @@
-# ruby_rbenv Cookbook Changelog
+# jlenv Cookbook Changelog
 
-This file is used to list changes made in each version of the ruby_rbenv cookbook.
+This file is used to list changes made in each version of the jlenv cookbook.
 
 ## 0.1.0 (2019-07-03)
 
