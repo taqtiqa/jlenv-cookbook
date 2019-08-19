@@ -77,16 +77,28 @@ platforms:
         - RUN zypper --non-interactive install sudo
 
 suites:
+  - name: recipes
+    provisioner:
+      policyfile: test/fixtures/cookbooks/recipes/system_install.pf.rb
+    verifier:
+      inspec_tests:
+        - test/integration/recipes
+  - name: issues
+    provisioner:
+      policyfile: test/fixtures/cookbooks/issues/system_install.pf.rb
+    verifier:
+      inspec_tests:
+        - test/integration/issues
   - name: system_install
     provisioner:
-      policyfile: test/fixtures/cookbooks/test/system_install.pf.rb
+      policyfile: test/fixtures/cookbooks/resources/system_install.pf.rb
     verifier:
       inspec_tests:
-        - test/integration/system_install
+        - test/integration/resources/system_install
   - name: global
     provisioner:
-      policyfile: test/fixtures/cookbooks/test/global.pf.rb
+      policyfile: test/fixtures/cookbooks/resources/global.pf.rb
     verifier:
       inspec_tests:
-        - test/integration/global
+        - test/integration/resources/global
     attributes:
