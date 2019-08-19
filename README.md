@@ -22,7 +22,7 @@ This cookbook requires Chef 13.0+.
 
 ### Platform
 
-- Debian derivatives
+- Debian derivatives (Ubuntu etc.)
 - Fedora
 - macOS (not currently tested)
 - RHEL derivatives (RHEL, CentOS, Amazon Linux, Oracle, Scientific Linux)

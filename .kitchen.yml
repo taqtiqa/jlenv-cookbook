@@ -1,43 +1,92 @@
 ---
 driver:
-  name: vagrant
+  name: dokken
+  privileged: true
+  env: [CHEF_LICENSE=accept]
+
+transport:
+  name: dokken
 
 provisioner:
-  name: chef_zero
-  product_name: chef
-  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
-  install_strategy: once
+  name: dokken
   deprecations_as_errors: true
-  policyfile: Policyfile.rb
 
 verifier:
   name: inspec
 
 platforms:
-  - name: centos-6
-  - name: centos-7
-  - name: fedora-latest
-  - name: debian-8
-  - name: debian-9
-  - name: ubuntu-16.04
-  - name: ubuntu-18.04
-  - name: opensuse-leap
+  -
+    name: debian-8
+    driver:
+      image: dokken/debian-8
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
+  -
+    name: debian-9
+    driver:
+      image: dokken/debian-9
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
+  -
+    name: centos-6
+    driver:
+      image: dokken/centos-6
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN yum -y install sudo
+  -
+    name: centos-7
+    driver:
+      image: dokken/centos-7
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN yum -y install sudo
+  -
+    name: fedora-latest
+    driver:
+      image: dokken/fedora-latest
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN dnf -y install sudo
+  -
+    name: ubuntu-16.04
+    driver:
+      image: dokken/ubuntu-16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
+  -
+    name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install sudo -y
+  -
+    name: opensuse-leap
+    driver:
+      image: dokken/opensuse-leap
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN zypper --non-interactive install sudo
 
 suites:
-  - name: pkg
-    run_list: recipe[test::pkg]
-    includes: [centos-7]
-  - name: global
-    run_list: recipe[test::global]
-  - name: julia_uninstall
-    run_list: recipe[test::julia_uninstall]
-    includes: [ubuntu-18.04]
   - name: system_install
-    run_list: recipe[test::system_install]
-    includes: [centos-7]
-  - name: user_install
-    run_list: recipe[test::user_install]
-    includes: [centos-7]
-  - name: custom_group_install
-    run_list: recipe[test::custom_group_install]
-    includes: [centos-7]
+    provisioner:
+      policyfile: test/fixtures/cookbooks/test/system_install.pf.rb
+    verifier:
+      inspec_tests:
+        - test/integration/system_install
+  - name: global
+    provisioner:
+      policyfile: test/fixtures/cookbooks/test/global.pf.rb
+    verifier:
+      inspec_tests:
+        - test/integration/global
+    attributes:

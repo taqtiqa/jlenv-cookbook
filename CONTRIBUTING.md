@@ -48,12 +48,23 @@ downloading the branch.
 
 ## Functional and Unit Tests
 
-This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/).
-It uses serverspec to run integration tests after the node has been
-converged to verify that the state of the node.
+This cookbook is set up to:
+
+1. Run lint and unit test with [delivery](https://github.com/chef/delivery-cli).
+   Uses `delivery local <stage>` to tun lint and unit tests locally.
+1. Run integration tests with [test-kitchen](https://kitchen.ci/).
+   It uses serverspec to run integration tests after the node has been
+   converged to verify that the state of the node.
+
+For faster testing, we use [Dokken](https://github.com/someara/kitchen-dokken) kitchen file, invoked by:
+
+```
+KITECHEN_YAML=.kitchen.dokken.yml kitchen test
+```
+https://hub.docker.com/u/dokken/
 
 Test kitchen should run completely without exception using the default
-[baseboxes provided by Chef](http://opscode.github.io/bento/).
+[containers provided by Dokken](https://hub.docker.com/u/dokken/).
 Because Test Kitchen creates VirtualBox machines and runs through
 every configuration in the .kitchen.yml file, it may take some time for
 these tests to complete.
@@ -80,6 +91,18 @@ for it.
 
 If you need help writing tests, please ask on the Chef Developer's
 mailing list, or the #chef-hacking IRC channel.
+
+Test kitchen can be run using the default
+[baseboxes provided by Chef](http://opscode.github.io/bento/):
+
+```
+KITECHEN_YAML=.kitchen.vagrant.yml kitchen test
+```
+
+Because Test Kitchen creates VirtualBox machines and runs through
+every configuration in the .kitchen.yml file, it may take some time for
+these tests to complete.
+
 
 ## Cookbook Contribution Do's and Don't's
 

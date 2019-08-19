@@ -1,0 +1,81 @@
+{
+  "revision_id": "dbde1355a3c3231e94164732e13c15c4dcff4864d6da77356d8b7e16504ebf3b",
+  "name": "test",
+  "run_list": [
+    "recipe[test::global]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "jlenv": {
+      "version": "0.3.0",
+      "identifier": "3eb9daf4e541b89187cdc1a2d4f25af148a7e9b6",
+      "dotted_decimal_identifier": "17655798618735032.40963189409764594.99992352582070",
+      "source": "../../../..",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "https://github.com/taqtiqa-mark/jlenv-cookbook.git",
+        "revision": "2213e6a79375a8f7dbfc7c84b1d1f3a9aa12488a",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "../../../.."
+      }
+    },
+    "test": {
+      "version": "0.99.1",
+      "identifier": "15a298986ff1ca3135bace847ba369eed9309261",
+      "dotted_decimal_identifier": "6089750787125706.13851350303800227.116474566972001",
+      "source": ".",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": "https://github.com/taqtiqa-mark/jlenv-cookbook.git",
+        "revision": "2213e6a79375a8f7dbfc7c84b1d1f3a9aa12488a",
+        "working_tree_clean": false,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "."
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "jlenv",
+        ">= 0.0.0"
+      ],
+      [
+        "test",
+        ">= 0.0.0"
+      ]
+    ],
+    "dependencies": {
+      "jlenv (0.3.0)": [
+
+      ],
+      "test (0.99.1)": [
+        [
+          "jlenv",
+          ">= 0.0.0"
+        ]
+      ]
+    }
+  }
+}

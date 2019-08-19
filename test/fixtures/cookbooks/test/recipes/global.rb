@@ -1,14 +1,14 @@
+
+# Spec resource usage with defaults.
+
+# Ensure Vagrant user exists on test environment
+include_recipe 'test::default'
+
 global_version = '1.0.3'
 
-# Install Jlenv Globally
+# Install Jlenv Globally.
+# TODO: Remove this step by installing the given version if not installed.
 jlenv_system_install 'system'
 
-jlenv_julia global_version do
-  verbose true
-end
-
-# Make sure that Vagarant user is on the box for dokken
-include_recipe 'test::dokken'
-
-# Set that Julia as the global Julia
+# Set that Julia version as the global Julia
 jlenv_global global_version
