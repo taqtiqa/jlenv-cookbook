@@ -52,3 +52,5 @@ Cheffile.lock
 .vagrant/
 .vagrant.d/
 .kitchen/
+
+test/*.lock.json

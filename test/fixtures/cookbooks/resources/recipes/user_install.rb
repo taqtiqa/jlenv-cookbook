@@ -1,7 +1,7 @@
 # Install jlenv and makes it avilable to the selected user
 
-# Ensure Vagrant user exists on test environment
-include_recipe 'test::default'
+# Ensure test setup
+include_recipe 'shared::default'
 
 version = '1.0.1'
 

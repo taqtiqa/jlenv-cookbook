@@ -2,8 +2,8 @@
 
 system_version = '1.0.1'
 
-# Make sure that Vagarant user is on the box for dokken
-include_recipe 'test::dokken'
+# Ensure test setup
+include_recipe 'shared::default'
 
 # System Install
 jlenv_system_install 'system'

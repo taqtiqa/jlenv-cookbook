@@ -1,8 +1,8 @@
 # Install jlenv and makes it avilable to the selected user
 version = '1.0.1'
 
-# Make sure that Vagarant user is on the box for dokken
-include_recipe 'test::dokken'
+# Ensure test setup
+include_recipe 'shared::default'
 
 group 'new-group' do
   members 'vagrant'
