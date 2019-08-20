@@ -30,7 +30,7 @@ property :user,               String
 property :environment,        Hash
 property :jlenv_action,       String, default: 'install'
 property :verbose,            [true, false], default: false
-property :julia_build_git_url, String, default: 'https://github.com/rbenv/julia-build.git'
+property :julia_build_git_url, String, default: 'https://github.com/jlenv/julia-build.git'
 
 action :install do
   Chef::Log.fatal('Rubinius not supported by this cookbook') if new_resource.version =~ /rbx/

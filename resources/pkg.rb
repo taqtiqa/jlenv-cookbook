@@ -36,7 +36,7 @@ property :timeout,                Integer, default: 300
 property :version,                String
 property :response_file,          String # Only used to reconfigure
 property :user,                   String
-property :rbenv_version,          String, required: true
+property :jlenv_version,          String, required: true
 
 default_action :install
 
