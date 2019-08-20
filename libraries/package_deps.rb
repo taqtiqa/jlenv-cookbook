@@ -6,6 +6,7 @@ class Chef
         when /^special-julia-/
           puts 'call another package install method'
         else
+          apt_update if node['platform_family'] == 'debian'
           package_deps.each do |deps|
             package deps
           end
