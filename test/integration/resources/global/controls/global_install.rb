@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-global_julia = '1.0.1'
+global_julia = 'v1.0.3'
 
 control 'Jlenv should be installed' do
   title 'Jlenv should be installed globally'
