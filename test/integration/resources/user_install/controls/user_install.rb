@@ -1,6 +1,5 @@
 # frozen_string_literal: true
-
-title 'Jlenv User Install Example Recipe'
+title 'Jlenv User Install Resource'
 
 control 'Jlenv should be installed' do
   impact 0.6

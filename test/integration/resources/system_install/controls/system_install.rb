@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+title 'Jlenv User Install Resource'
 
 control 'Jlenv system install' do
   title 'Jlenv should be installed system wide'
