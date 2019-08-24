@@ -61,7 +61,6 @@ For faster testing, we use [Dokken](https://github.com/someara/kitchen-dokken) k
 ```
 KITECHEN_YAML=.kitchen.dokken.yml kitchen test
 ```
-https://hub.docker.com/u/dokken/
 
 Test kitchen should run completely without exception using the default
 [containers provided by Dokken](https://hub.docker.com/u/dokken/).
@@ -102,7 +101,6 @@ KITECHEN_YAML=.kitchen.vagrant.yml kitchen test
 Because Test Kitchen creates VirtualBox machines and runs through
 every configuration in the .kitchen.yml file, it may take some time for
 these tests to complete.
-
 
 ## Cookbook Contribution Do's and Don't's
 
