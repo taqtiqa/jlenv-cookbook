@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-title 'Jlenv User Install Example Recipe'
+title 'Jlenv User Install Resource'
 
 control 'Jlenv should be installed' do
   impact 0.6
@@ -44,7 +44,7 @@ control 'Jlenv should be installed' do
   describe os_env('PATH', 'target') do
     its('split') { should_not include('') }
     its('split') { should_not include('.') }
-    its('split') { should include ('/home/vagrant/.jlenv/shims') }
+    its('split') { should include('/home/vagrant/.jlenv/shims') }
   end
 end
 

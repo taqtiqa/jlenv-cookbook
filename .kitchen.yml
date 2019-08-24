@@ -79,13 +79,13 @@ platforms:
 suites:
   - name: recipes
     provisioner:
-      policyfile: test/fixtures/cookbooks/recipes/system_install.pf.rb
+      policyfile: test/fixtures/cookbooks/recipes/Policyfile.rb
     verifier:
       inspec_tests:
         - test/integration/recipes
   - name: issues
     provisioner:
-      policyfile: test/fixtures/cookbooks/issues/system_install.pf.rb
+      policyfile: test/fixtures/cookbooks/issues/Policyfile.rb
     verifier:
       inspec_tests:
         - test/integration/issues
