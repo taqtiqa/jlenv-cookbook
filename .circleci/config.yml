@@ -10,7 +10,7 @@ jobs:
     steps:
       - cmds/get-pkg-check-install:
           url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
-          checksum: '415f50b93235e761db284c761f6a8240a6ef6762ee3ec7ff869d2bccb1a1cdf7'
+          checksum: '2bfbecb6cd75f1b97fa9c10264d2e2fb6c428313'
           verify_command: 'vagrant'
 
 workflows:
