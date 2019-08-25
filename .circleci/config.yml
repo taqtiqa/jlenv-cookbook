@@ -11,7 +11,7 @@ jobs:
       - cmds/get-pkg-check-install:
           url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
           checksum: '2bfbecb6cd75f1b97fa9c10264d2e2fb6c428313'
-          verify_command: 'vagrant'
+          verify_command: '/usr/bin/vagrant'
 
 workflows:
   kitchen:
