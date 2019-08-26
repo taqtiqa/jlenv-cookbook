@@ -1,7 +1,7 @@
 ---
 version: 2.1
 orbs:
-  kitchen: taqtiqa/kitchen@1.3.3
+  kitchen: taqtiqa/kitchen@dev:1.3.5
   cmds:    taqtiqa/commands@dev:0.1.14
 
 jobs:
