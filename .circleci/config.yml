@@ -2,16 +2,10 @@
 version: 2.1
 orbs:
   kitchen: taqtiqa/kitchen@1.3.3
-  cmds:    taqtiqa/commands@dev:0.1.13
+  cmds:    taqtiqa/commands@dev:0.1.14
 
 jobs:
-  vagrant:
-    executor: kitchen/chef
-    steps:
-      - cmds/get-pkg-check-install:
-          url: 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb'
-          checksum: '2bfbecb6cd75f1b97fa9c10264d2e2fb6c428313'
-          verify_command: '/opt/vagrant/bin/vagrant'
+  ignite-install:
 
 workflows:
   kitchen:
