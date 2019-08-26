@@ -9,6 +9,7 @@ jobs:
     executor: kitchen/chef
     steps:
       - cmds/ignite-install:
+          version:
 
 workflows:
   kitchen:
