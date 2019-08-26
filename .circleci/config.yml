@@ -14,8 +14,8 @@ jobs:
 workflows:
   kitchen:
     jobs:
-      - ignite:
-          name: ignite
+    #  - ignite:
+    #      name: ignite
     #   - kitchen/danger:
     #       name: danger
     #       context: Danger
@@ -26,8 +26,8 @@ workflows:
       - kitchen/dokken:
           suite: global
           name: global
-          requires: [mdlint, yamllint, ignite]
-        #   requires: [mdlint, yamllint, danger]
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, ignite]
       - kitchen/dokken-single:
           suite: global-opensuse-leap
           name: global-opensuse-leap
