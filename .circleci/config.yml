@@ -5,13 +5,16 @@ orbs:
   cmds:    taqtiqa/commands@dev:0.1.14
 
 jobs:
-  ignite-install:
+  ignite:
+    executor: kitchen/chef
+    steps:
+      - cmds/ignite-install:
 
 workflows:
   kitchen:
     jobs:
-      - vagrant:
-          name: vagrant
+      - ignite:
+          name: ignite
     #   - kitchen/danger:
     #       name: danger
     #       context: Danger
@@ -22,7 +25,7 @@ workflows:
       - kitchen/dokken:
           suite: global
           name: global
-          requires: [mdlint, yamllint, vagrant]
+          requires: [mdlint, yamllint, ignite]
         #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           suite: global-opensuse-leap
@@ -47,7 +50,7 @@ workflows:
       - kitchen/dokken-single:
           name: julia-uninstall-ubuntu-1804
           suite: julia-uninstall-ubuntu-1804
-          requires: [mdlint, yamllint, vagrant]
+          requires: [mdlint, yamllint]
         #   requires: [mdlint, yamllint, danger]
       - kitchen/dokken-single:
           name: custom-group
