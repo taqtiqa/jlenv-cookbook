@@ -16,7 +16,7 @@ end
 
 # Install plugin to build Julia
 jlenv_plugin 'julia-build' do
-  git_url 'https://github.com/HiroakiMikami/julia-build.git'
+  git_url 'https://github.com/jlenv/julia-build.git'
   user 'vagrant'
 end
 

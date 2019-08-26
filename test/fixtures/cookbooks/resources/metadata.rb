@@ -1,5 +1,6 @@
 name 'resources'
-version '0.9.2'
+description 'A cookbook that exercises default behaviour.'
+version '0.9.3'
 
 depends 'shared'
 

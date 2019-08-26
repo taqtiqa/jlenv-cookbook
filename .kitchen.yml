@@ -77,6 +77,12 @@ platforms:
         - RUN zypper --non-interactive install sudo
 
 suites:
+  - name: resources
+    provisioner:
+      policyfile: test/fixtures/cookbooks/resources/Policyfile.rb
+    verifier:
+      inspec_tests:
+        - test/integration/resources
   - name: recipes
     provisioner:
       policyfile: test/fixtures/cookbooks/recipes/Policyfile.rb

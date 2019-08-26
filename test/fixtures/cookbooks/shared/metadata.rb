@@ -1,5 +1,5 @@
 name 'shared'
-version '0.9.2'
+version '0.9.4'
 
 depends 'jlenv'
 
