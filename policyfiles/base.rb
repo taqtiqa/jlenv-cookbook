@@ -1,3 +1,3 @@
 default_source :supermarket
 
-cookbook 'test', path: './test/fixtures/cookbooks/test'
+cookbook 'resources', path: './test/fixtures/cookbooks/resources'

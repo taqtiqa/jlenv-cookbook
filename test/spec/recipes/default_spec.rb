@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require_relative '../recipes_spec_helper'
 
 describe 'jlenv::default' do
 

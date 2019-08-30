@@ -1,8 +1,8 @@
-require_relative '../spec_helper'
+require_relative '../recipes_spec_helper'
 
-describe 'test::system_install' do
-  let(:chef_run) do
-    ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe)
+describe 'recipes::system_install' do
+  let(:chef_run)  do
+    ChefSpec::SoloRunner.new.converge(described_recipe)
   end
 
   it 'converges successfully' do

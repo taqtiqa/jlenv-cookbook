@@ -7,4 +7,5 @@ RSpec.configure do |config|
   end
   config.platform = 'ubuntu'
   config.version = '18.04'
+  config.policyfile_path = File.join(Dir.pwd, 'test', 'fixtures', 'cookbooks', 'resources', 'Policyfile.rb')
 end

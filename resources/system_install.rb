@@ -26,6 +26,7 @@ provides :jlenv_system_install
 
 property :git_url,       String, default: 'https://github.com/jlenv/jlenv.git'
 property :git_ref,       String, default: 'master'
+property :git_username,  String, default: 'root'
 property :global_prefix, String, default: '/usr/local/jlenv'
 property :update_jlenv,  [true, false], default: true
 
@@ -52,6 +53,7 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     action :checkout if new_resource.update_jlenv == false
+    notifies :run, 'bash[Initialize global git username]', :immediately
     notifies :run, 'ruby_block[Add jlenv to PATH]', :immediately
     notifies :run, 'bash[Initialize system jlenv]', :immediately
   end
@@ -66,6 +68,16 @@ action :install do
     block do
       ENV['PATH'] = "#{new_resource.global_prefix}/shims:#{new_resource.global_prefix}/bin:#{ENV['PATH']}"
     end
+    action :nothing
+  end
+
+  # Git within dokken encounters the problem that /dev/tty is not available.
+  # See also: https://stackoverflow.com/a/57458443/152860
+  bash 'Initialize global git username' do
+    code <<-EOH
+      su -l #{node['current_user']} -c 'git config --global user.name #{new_resource.git_username||node['current_user']}'
+    EOH
+    flags "-x"
     action :nothing
   end
 

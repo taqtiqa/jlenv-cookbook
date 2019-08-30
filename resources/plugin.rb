@@ -22,7 +22,7 @@
 #
 provides :jlenv_plugin
 
-property :git_url, String, required: true
+property :git_url, String, default: 'https://github.com/jlenv/jlenv-build.git'
 property :git_ref, String, default: 'master'
 property :user,    String
 
@@ -35,7 +35,7 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     user new_resource.user if new_resource.user
-    action :sync
+    action :checkout
   end
 end
 
