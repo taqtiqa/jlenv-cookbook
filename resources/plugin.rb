@@ -20,13 +20,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Install a plugin to either user or system jlenv.
 provides :jlenv_plugin
 
-property :git_url, String, default: 'https://github.com/jlenv/jlenv-build.git'
+property :git_url, String, default: 'https://github.com/jlenv/julia-build.git'
 property :git_ref, String, default: 'master'
+property :plugin,  String, name_property: true
 property :user,    String
+property :update_jlenv, [true, false], default: true
 
-# https://github.com/jlenv/jlenv/wiki/Plugins
+# TODO: 
+# redirect https://github.com/jlenv/jlenv/wiki/Plugins to github pages
 action :install do
   # If we pass in a username, we then to a plugin install to the users home_dir
   # See chef_jlenv_script_helpers.rb for root_path
@@ -35,7 +40,7 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     user new_resource.user if new_resource.user
-    action :checkout
+    action :checkout if new_resource.update_jlenv == false
   end
 end
 

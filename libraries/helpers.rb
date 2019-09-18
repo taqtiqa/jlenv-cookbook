@@ -20,6 +20,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+require_relative 'lib/chef/provider/git_ext'
 
 class Chef
   module Jlenv
@@ -85,7 +86,17 @@ class Chef
         when 'rhel', 'fedora', 'amazon'
           %w(git grep tar)
         when 'debian', 'suse'
-          %w(git grep)
+          case node['platform']
+          when 'ubuntu'
+            case node['platform_version']
+            when '18.04'
+              %w(git grep)
+            else
+              %w(git grep) 
+            end
+          else
+            %w(git grep)
+          end
         when 'mac_os_x', 'gentoo'
           %w(git)
         when 'freebsd'

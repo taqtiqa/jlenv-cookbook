@@ -28,7 +28,7 @@ property :git_url,       String, default: 'https://github.com/jlenv/jlenv.git'
 property :git_ref,       String, default: 'master'
 property :git_username,  String, default: 'root'
 property :global_prefix, String, default: '/usr/local/jlenv'
-property :update_jlenv,  [true, false], default: true
+property :update_jlenv, [true, false], default: true
 
 action :install do
   node.run_state['root_path'] ||= {}
@@ -53,7 +53,7 @@ action :install do
     repository new_resource.git_url
     reference new_resource.git_ref
     action :checkout if new_resource.update_jlenv == false
-    notifies :run, 'bash[Initialize global git username]', :immediately
+    #notifies :run, 'bash[Initialize global git username]', :immediately
     notifies :run, 'ruby_block[Add jlenv to PATH]', :immediately
     notifies :run, 'bash[Initialize system jlenv]', :immediately
   end

@@ -33,6 +33,7 @@ property :user_prefix,  String, default: lazy { ::File.join(home_dir, '.jlenv') 
 property :update_jlenv, [true, false], default: true
 
 action :install do
+  
   package package_prerequisites
 
   node.run_state['root_path'] ||= {}

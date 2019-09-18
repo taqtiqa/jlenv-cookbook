@@ -1,0 +1,1 @@
+require_relative './../libraries/lib/chef/provider/git_ext'
