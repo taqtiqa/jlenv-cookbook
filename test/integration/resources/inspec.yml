@@ -10,3 +10,6 @@ version: 0.1.0
 inspec_version: "~> 2.1"
 supports:
   - os-family: linux
+depends:
+  - name: global
+    path: ../global

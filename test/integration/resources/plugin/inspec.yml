@@ -3,10 +3,8 @@ name: jlenv
 title: jlenv profile
 maintainer: Taqtiqa LLC
 copyright: Taqtiqa LLC
-copyright_email: admin@taqtiqa.com
 license: Apache-2.0
-summary: Verifies jlenv correctly sets the global Julia version.
+summary: Verifies jlenv is installed correctly system wide.
 version: 0.1.0
-inspec_version: "~> 2.1"
 supports:
   - os-family: linux
