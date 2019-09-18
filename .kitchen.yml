@@ -22,7 +22,7 @@ platforms:
       pid_one_command: /sbin/init
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get install sudo -y
+        # - RUN /usr/bin/apt-get upgrade -y
   -
     name: debian-9
     driver:
@@ -30,7 +30,7 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get install sudo -y
+        # - RUN /usr/bin/apt-get upgrade -y
   -
     name: centos-6
     driver:
@@ -42,6 +42,20 @@ platforms:
     name: centos-7
     driver:
       image: dokken/centos-7
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN yum -y install sudo
+  -
+    name: amazonlinux
+    driver:
+      image: dokken/amazonlinux
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN yum -y install sudo
+  -
+    name: amazonlinux-2
+    driver:
+      image: dokken/amazonlinux-2
       pid_one_command: /usr/lib/systemd/systemd
       intermediate_instructions:
         - RUN yum -y install sudo
@@ -59,15 +73,15 @@ platforms:
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get install sudo -y
+        # - RUN /usr/bin/apt-get upgrade -y
   -
     name: ubuntu-18.04
     driver:
-      image: dokken/ubuntu-18.04
+      image: taqtiqa/dokken-images:ubuntu-18.04-latest
       pid_one_command: /bin/systemd
       intermediate_instructions:
         - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get install sudo -y
+        # - RUN /usr/bin/apt-get upgrade -y
   -
     name: opensuse-leap
     driver:
@@ -95,16 +109,16 @@ suites:
     verifier:
       inspec_tests:
         - test/integration/issues
-  - name: system_install
-    provisioner:
-      policyfile: test/fixtures/cookbooks/resources/system_install.pf.rb
-    verifier:
-      inspec_tests:
-        - test/integration/resources/system_install
-  - name: global
-    provisioner:
-      policyfile: test/fixtures/cookbooks/resources/global.pf.rb
-    verifier:
-      inspec_tests:
-        - test/integration/resources/global
-    attributes:
+  # - name: system_install
+  #   provisioner:
+  #     policyfile: test/fixtures/cookbooks/resources/system_install.pf.rb
+  #   verifier:
+  #     inspec_tests:
+  #       - test/integration/resources/system_install
+  # - name: global
+  #   provisioner:
+  #     policyfile: test/fixtures/cookbooks/resources/global.pf.rb
+  #   verifier:
+  #     inspec_tests:
+  #       - test/integration/resources/global
+  #   attributes:
