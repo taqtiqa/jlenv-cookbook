@@ -7,9 +7,13 @@ copyright_email: admin@taqtiqa.com
 license: Apache-2.0
 summary: Verifies jlenv correctly sets the global Julia version.
 version: 0.1.0
-inspec_version: "~> 2.1"
+inspec_version: "~> 3.0"
 supports:
   - os-family: linux
 depends:
   - name: global
-    path: ../global
+    path: ./test/integration/resources/global
+  - name: system_install
+    path: ./test/integration/resources/system_install
+  - name: user_install
+    path: ./test/integration/resources/user_install
