@@ -1,0 +1,13 @@
+users:
+  jovyan: 
+    group:     jovyan
+    version:   '1.0.5'
+  ubuntu: 
+    group:     ubuntu
+    version:   '1.2.0'
+  vagrant: 
+    group:     vagrant
+    version:   '1.0.2'
+  root: 
+    group:     root
+    version:   '1.0.0'

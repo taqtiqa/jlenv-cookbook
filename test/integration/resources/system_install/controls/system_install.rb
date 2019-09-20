@@ -18,4 +18,17 @@ control 'Jlenv system path' do
     it { should exist }
     it { should be_directory }
   end
+
+  # Issue: https://github.com/jlenv/jlenv-cookbook/issues/3
+  # Issue: https://github.com/jlenv/jlenv-cookbook/issues/4
+  # 
+  describe file('/etc/profile.d/jlenv.sh') do
+    its('type')  { should be_file }
+    its('group') { should eq 'root' }
+    its('owner') { should eq 'root' }
+    its('mode')  { should cmp '0755' }
+    it { should     be_executable.by('others') }
+    it { should_not be_writable.by('others') }
+  end
+
 end

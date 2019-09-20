@@ -1,9 +1,9 @@
 ---
 name: jlenv
-title: jlenv profile
+title: jlenv julia_uninstall resourse profile
 maintainer: Taqtiqa LLC
 license: Apache-2.0
-summary: Verify that Julias can be uninstalled
+summary: Verifies jlenv julia_uninstall resource correctly functions with defaults.
 version: 1.0.0
 supports:
   - os-family: linux
