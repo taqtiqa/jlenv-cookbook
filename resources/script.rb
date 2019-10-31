@@ -1,12 +1,14 @@
 #
-# Cookbook:: ruby_rbenv
+# Cookbook:: jlenv
 # Resource:: script
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
-# Author:: Dan Webb <dan.webb.damacus.io>
+# Author:: Dan Webb <dan.webb@damacus.io>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2011-2018, Fletcher Nichol
 # Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +22,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-provides :rbenv_script
+provides :jlenv_script
 
-property :rbenv_version, String
+property :jlenv_version, String
 property :code,          String
 property :creates,       String
 property :cwd,           String
@@ -51,5 +53,5 @@ action :run do
 end
 
 action_class do
-  include Chef::Rbenv::Helpers
+  include Chef::Jlenv::Helpers
 end

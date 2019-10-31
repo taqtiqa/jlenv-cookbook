@@ -3,9 +3,22 @@
 We are glad you want to contribute to the sysctl cookbook! The first
 step is the desire to improve the project.
 
+## Recognizing All Contributors
+
+This project follows the
+[All Contributors](https://allcontributors.org/docs/en/overview) specification
+for recognizing contributors to an open source project in a way that recognizes
+different types of contributions, not just code.
+
+### Adding a contributor
+
+Contributors are encouraged to add themselves to the list using the
+[All Contributors (Git Hub) bot](https://allcontributors.org/docs/en/bot/overview).
+See the bot [usage instructions](https://allcontributors.org/docs/en/bot/usage)).
+
 ## Quick-contribute
 
-* Create an issue on the github [issue tracker](https://github.com/sous-chefs/sysctl/issues)
+* Create an issue on the github [issue tracker](https://github.com/jlenv/jlenv/issues)
 * Link to your patch as a rebased git branch or pull request from the ticket
 
 We regularly review contributions and will get back to you if we have
@@ -16,8 +29,8 @@ any suggestions or concerns.
 You should submit your patch as a git branch named after the change.
 
 It is a best practice to have your commit message have a _summary
-line_, followed by an empty line and then a brief description of 
-the commit. This also helps other contributors understand the 
+line_, followed by an empty line and then a brief description of
+the commit. This also helps other contributors understand the
 purpose of changes to the code.
 
 Remember that not all users use Chef in the same way or on the same
@@ -35,12 +48,22 @@ downloading the branch.
 
 ## Functional and Unit Tests
 
-This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/). It
-uses serverspec to run integration tests after the node has been
-converged to verify that the state of the node.
+This cookbook is set up to:
+
+1. Run lint and unit test with [delivery](https://github.com/chef/delivery-cli).
+   Uses `delivery local <stage>` to tun lint and unit tests locally.
+1. Run integration tests with [test-kitchen](https://kitchen.ci/).
+   It uses serverspec to run integration tests after the node has been
+   converged to verify that the state of the node.
+
+For faster testing, we use [Dokken](https://github.com/someara/kitchen-dokken) kitchen file, invoked by:
+
+```
+KITECHEN_YAML=.kitchen.dokken.yml kitchen test
+```
 
 Test kitchen should run completely without exception using the default
-[baseboxes provided by Chef](http://opscode.github.io/bento/).
+[containers provided by Dokken](https://hub.docker.com/u/dokken/).
 Because Test Kitchen creates VirtualBox machines and runs through
 every configuration in the .kitchen.yml file, it may take some time for
 these tests to complete.
@@ -68,6 +91,17 @@ for it.
 If you need help writing tests, please ask on the Chef Developer's
 mailing list, or the #chef-hacking IRC channel.
 
+Test kitchen can be run using the default
+[baseboxes provided by Chef](http://opscode.github.io/bento/):
+
+```
+KITECHEN_YAML=.kitchen.vagrant.yml kitchen test
+```
+
+Because Test Kitchen creates VirtualBox machines and runs through
+every configuration in the .kitchen.yml file, it may take some time for
+these tests to complete.
+
 ## Cookbook Contribution Do's and Don't's
 
 Please do include tests for your contribution. If you need help, ask
@@ -81,8 +115,9 @@ isn't trivial so we don't have to duplicate effort in testing. Chef
 10.14+ "doc" formatted output is sufficient.
 
 Please do indicate new platform (families) or platform versions in the
-commit message, and update the relevant ticket.  If a contribution adds 
-new platforms or platform versions, indicate such in the body of the commit message(s).
+commit message, and update the relevant ticket.  If a contribution adds
+new platforms or platform versions, indicate such in the body of the commit
+message(s).
 
 Please do use [foodcritic](http://www.foodcritic.io/) to
 lint-check the cookbook. Except FC007, it should pass all correctness

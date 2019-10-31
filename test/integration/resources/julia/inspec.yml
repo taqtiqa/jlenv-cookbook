@@ -1,0 +1,10 @@
+---
+name: jlenv
+title: jlenv julia resource profile
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
+license: Apache-2.0
+summary: Verifies jlenv julia resource correctly functions with defaults.
+version: 0.1.0
+supports:
+  - os-family: linux

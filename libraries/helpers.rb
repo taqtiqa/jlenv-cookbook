@@ -1,10 +1,12 @@
 #
-# Cookbook:: ruby_rbenv
-# Library:: Chef::Rbenv::ShellHelpers
+# Cookbook:: jlenv
+# Library:: Chef::Jlenv::ShellHelpers
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2011-2017, Fletcher Nichol
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,15 +20,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+require_relative 'lib/chef/provider/git_ext'
 
 class Chef
-  module Rbenv
+  module Jlenv
     module Helpers
       def wrap_shim_cmd(cmd)
-        [%(export RBENV_ROOT="#{rbenv_root}"),
-         %(export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"),
-         %(export RBENV_VERSION="#{new_resource.rbenv_version}"),
-         %($RBENV_ROOT/shims/#{cmd}),
+        [%(export JLENV_ROOT="#{jlenv_root}"),
+         %(export PATH="$JLENV_ROOT/bin:$JLENV_ROOT/shims:$PATH"),
+         %(export JLENV_VERSION="#{new_resource.jlenv_version}"),
+         %($JLENV_ROOT/shims/#{cmd}),
         ].join(' && ')
       end
 
@@ -40,29 +43,29 @@ class Chef
         end
       end
 
-      def which_rbenv
+      def which_jlenv
         "(#{new_resource.user || 'system'})"
       end
 
       def binary
         prefix = new_resource.user ? "sudo -u #{new_resource.user} " : ''
-        "#{prefix}#{root_path}/versions/#{new_resource.rbenv_version}/bin/gem"
+        "#{prefix}#{root_path}/versions/#{new_resource.jlenv_version}/bin/gem"
       end
 
       def script_code
         script = []
-        script << %(export RBENV_ROOT="#{root_path}")
-        script << %(export PATH="${RBENV_ROOT}/bin:$PATH")
-        script << %{eval "$(rbenv init -)"}
-        if new_resource.rbenv_version
-          script << %(export RBENV_VERSION="#{new_resource.rbenv_version}")
+        script << %(export JLENV_ROOT="#{root_path}")
+        script << %(export PATH="${JLENV_ROOT}/bin:$PATH")
+        script << %{eval "$(jlenv init -)"}
+        if new_resource.jlenv_version
+          script << %(export JLENV_VERSION="#{new_resource.jlenv_version}")
         end
         script << new_resource.code
         script.join("\n").concat("\n")
       end
 
       def script_environment
-        script_env = { 'RBENV_ROOT' => root_path }
+        script_env = { 'JLENV_ROOT' => root_path }
 
         script_env.merge!(new_resource.environment) if new_resource.environment
 
@@ -83,7 +86,17 @@ class Chef
         when 'rhel', 'fedora', 'amazon'
           %w(git grep tar)
         when 'debian', 'suse'
-          %w(git grep)
+          case node['platform']
+          when 'ubuntu'
+            case node['platform_version']
+            when '18.04'
+              %w(git grep)
+            else
+              %w(git grep) 
+            end
+          else
+            %w(git grep)
+          end
         when 'mac_os_x', 'gentoo'
           %w(git)
         when 'freebsd'
@@ -93,7 +106,7 @@ class Chef
         end
       end
 
-      def ruby_installed?
+      def julia_installed?
         if Array(new_resource.action).include?(:reinstall)
           return false
         elsif ::File.directory?(::File.join(root_path, 'versions', new_resource.version))

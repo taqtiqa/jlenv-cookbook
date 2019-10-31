@@ -1,12 +1,14 @@
 #
-# Cookbook:: ruby_rbenv
+# Cookbook:: jlenv
 # Resource:: global
 #
 # Author:: Fletcher Nichol <fnichol@nichol.ca>
-# Author:: Dan Webb <dan.webb.damacus.io>
+# Author:: Dan Webb <dan.webb@damacus.io>
+# Author:: Mark Van de Vyver <mark@taqtiqa.com>
 #
 # Copyright:: 2011-2018, Fletcher Nichol
 # Copyright:: 2017-2018, Dan Webb
+# Copyright:: 2019, Mark Van de Vyver
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,12 +23,12 @@
 # limitations under the License.
 #
 
-# Check for the user or system global verison
+# Check for the user or system global version
 # If we pass in a user check that users global
 
-provides :rbenv_global
+provides :jlenv_global
 
-property :rbenv_version, String, name_property: true
+property :jlenv_version, String, name_property: true
 property :user,          String
 property :root_path,     String, default: lazy {
   if user
@@ -36,12 +38,12 @@ property :root_path,     String, default: lazy {
   end
 }
 
-# This sets the Global rbenv version
-# e.g. "rbenv global" should return the version we set
+# This sets the Global jlenv version
+# e.g. "jlenv global" should return the version we set
 
 action :create do
-  rbenv_script "globals #{which_rbenv}" do
-    code "rbenv global #{new_resource.rbenv_version}"
+  jlenv_script "globals #{which_jlenv}" do
+    code "jlenv global #{new_resource.jlenv_version}"
     user new_resource.user if new_resource.user
     action :run
     not_if { current_global_version_correct? }
@@ -49,10 +51,10 @@ action :create do
 end
 
 action_class do
-  include Chef::Rbenv::Helpers
+  include Chef::Jlenv::Helpers
 
   def current_global_version_correct?
-    current_global_version == new_resource.rbenv_version
+    current_global_version == new_resource.jlenv_version
   end
 
   def current_global_version

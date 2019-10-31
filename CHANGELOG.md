@@ -1,6 +1,13 @@
-# ruby_rbenv Cookbook Changelog
+# jlenv Cookbook Changelog
 
-This file is used to list changes made in each version of the ruby_rbenv cookbook.
+This file is used to list changes made in each version of the jlenv cookbook.
+
+## 0.1.0 (2019-07-03)
+
+### NOTICE: Cookbook has been ported to Julia
+
+- Renamed to jlenv-cookbook and uploaded to Supermarket.
+- Updated Circle-CI config to run integration tests using kitchen-docker
 
 ## 2.1.2 (2018-11-09)
 
@@ -52,23 +59,28 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## 2.0.1 (2017-08-02)
 
-- Fix user_install resource bug where the script wasn't being called with the correct environment. Fixes #175
+- Fix user_install resource bug where the script wasn't being called with the
+  correct environment. Fixes #175
 
 ## 2.0.0 (2017-07-24)
 
 - Switch libraries to custom resources
 - Use gem install from core Chef
 - Add rbenv_system_install resource
-- Remove system_install recipe. Please see the system_install test recipe for usage.
+- Remove system_install recipe. Please see the system_install test recipe for
+  usage.
 - Remove user_install recipe. Please see the user_install test recipe for usage.
 - Removed all other recipes for consistent usage.
 - Remove FreeBSD "support" (the platform isn't currently tested)
-- Remove Arch Linux support in README. We never really supported this, and it isn't tested
+- Remove Arch Linux support in README. We never really supported this, and it
+  isn't tested
 - Update required chef-version to the one we test with (Chef 12.19+)
 
 ### Known Current Bugs
 
-- Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1\. As patching is currently unavailable please pin to a prior version if you need this installing.
+- Installing Ruby 2.3.1 on Fedora requires a patched version of 2.3.1\. As
+  patching is currently unavailable please pin to a prior version if you need
+  this installing.
 
 ## 1.2.1 (2017-06-23)
 
@@ -80,16 +92,21 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 ## 1.2.0 (2017-04-11)
 
 - Migrated maintenance of this cookbook to Sous Chefs
-- Remove the check to see if the homebrew provider exists since this always exists in Chef 12 and the code failed on Chef 13
-- Added checks to user install recipes to avoid breaking if the rbenv_home does not exist
+- Remove the check to see if the homebrew provider exists since this always
+  exists in Chef 12 and the code failed on Chef 13
+- Added checks to user install recipes to avoid breaking if the rbenv_home does
+  not exist
 - Removed test deps from the Gemfile as we should be testing with ChefDK
-- Removed the "suggests 'java'" metadata as suggests was never implemented in Chef and has been removed from Chef 13
+- Removed the "suggests 'java'" metadata as suggests was never implemented in
+  Chef and has been removed from Chef 13
 - Bumped the required Chef release from 12.0 to 12.1
 
 ## 1.1.0 (2016-06-17)
 
-- Restored compatibility for platforms that don't yet support multipackage installs in Chef (BSD and OS X in particular)
-- Updated to Grab rbenv from the new repo URL and use https vs. git for compatibility
+- Restored compatibility for platforms that don't yet support multipackage
+  installs in Chef (BSD and OS X in particular)
+- Updated to Grab rbenv from the new repo URL and use https vs. git for
+  compatibility
 - Added missing Chefspec matchers
 - Enabled use_inline_resources in all providers
 - Added chef_version metadata to metadata.rb
@@ -107,25 +124,36 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ### WARNING: Cookbook has been renamed
 
-- Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in the rbenv cookbook). If you wrap this cookbook you're going to need to update the recipes you include. All providers have been updated to keep their existing rbenv_xyz names for backwards compatibility and attributes still maintain the rbenv namespace.
+- Renamed to ruby_rbenv and uploaded to Supermarket (all attributes rename in
+  the rbenv cookbook). If you wrap this cookbook you're going to need to update
+  the recipes you include. All providers have been updated to keep their
+  existing rbenv_xyz names for backwards compatibility and attributes still
+  maintain the rbenv namespace.
 - Updated Travis config to run integration tests in Travis using kitchen-docker
 
 ## 0.9.0 (2015-10-12)
 
-- Fixed base platform case statement in the cookbook that set install_pkgs and user_home_root attributes. This has been converted to a platform_family statement to better support derivitive operating systems and the attributes are set at default levels so they can be overwritten in wrapper cookbooks
+- Fixed base platform case statement in the cookbook that set install_pkgs and
+  user_home_root attributes. This has been converted to a platform_family
+  statement to better support derivitive operating systems and the attributes
+  are set at default levels so they can be overwritten in wrapper cookbooks
 - Updated Travis to test using Chef DK vs. Gem installs
 - Fixed Chefspecs and Test Kitchen bats tests to all pass
 - Added the Apache 2.0 license file
 - Updated and added new development dependencies to the Gemfile
-- Use Chef 12.1+ multi-package installs for the dependency packages to speed up installs
+- Use Chef 12.1+ multi-package installs for the dependency packages to speed up
+  installs
 - Removed the empty Vagrant recipe
-- Actually depend on ruby_version vs. suggests since suggests isn't implemented in Chef
+- Actually depend on ruby_version vs. suggests since suggests isn't implemented
+  in Chef
 
 ## 0.8.1 (2015-08-28)
 
-- Add rbenv_action attribute to rbenv_ruby LWRP so to allow using rvm-download rbenv plugin to download ruby vs. installing ruby
+- Add rbenv_action attribute to rbenv_ruby LWRP so to allow using rvm-download
+  rbenv plugin to download ruby vs. installing ruby
 - Fix the ability to install gems to a specific version of ruby
-- Remove Chef version checks around use_inline_resources since we require Chef 12
+- Remove Chef version checks around use_inline_resources since we require Chef
+  12
 - Use default_action method in the LWRPs
 - Fix various rubocop warnings
 
@@ -137,59 +165,90 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## 0.7.3 (2015-07-8)
 
-- Issue [#91](https://github.com/fnichol/chef-rbenv/issues/91) [#79](https://github.com/fnichol/chef-rbenv/issues/79) [#92](https://github.com/fnichol/chef-rbenv/pull/92): Add matchers for rbenv_gem and rbenv_ruby. ([@tduffield](https://github.com/tduffield) and many others)
-- Issue [#107](https://github.com/fnichol/chef-rbenv/issues/107): "Option name must be a kind of String!" when installing gems.
-- Issue [#101](https://github.com/fnichol/chef-rbenv/issues/101): Use full class name for rbenv_rehash resource
-- Fix undefined method `timeout' for LWRP resource rbenv_gem. ([@nathantsoi](https://github.com/nathantsoi) and others)
-- Issue [#110](https://github.com/fnichol/chef-rbenv/issues/110): Chef 12.3.0 - undefined method `clear_sources' for Chef::Resource::RbenvGem. ([@tatat](https://github.com/tatat) and others)
+- Issue [#91](https://github.com/fnichol/chef-rbenv/issues/91)
+  [#79](https://github.com/fnichol/chef-rbenv/issues/79)
+  [#92](https://github.com/fnichol/chef-rbenv/pull/92): Add matchers for
+  rbenv_gem and rbenv_ruby. ([@tduffield](https://github.com/tduffield) and
+  many others)
+- Issue [#107](https://github.com/fnichol/chef-rbenv/issues/107): "Option name
+  must be a kind of String!" when installing gems.
+- Issue [#101](https://github.com/fnichol/chef-rbenv/issues/101): Use full
+  class name for rbenv_rehash resource
+- Fix undefined method `timeout' for LWRP resource rbenv_gem.
+  ([@nathantsoi](https://github.com/nathantsoi) and others)
+- Issue [#110](https://github.com/fnichol/chef-rbenv/issues/110): Chef 12.3.0 -
+  undefined method `clear_sources' for Chef::Resource::RbenvGem.
+  ([@tatat](https://github.com/tatat) and others)
 - Fork from <https://github.com/fnichol/chef-rbenv>
 
 ## 0.7.2 (2012-12-31)
 
-- Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't call libexec commands directly. ([@mhoran])
+- Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Don't call
+  libexec commands directly. ([@mhoran])
 - Add integration tests for a system Ruby version. ([@fnichol])
 
 ## 0.7.1 (unreleased)
 
-- Pull request [#36](https://github.com/fnichol/chef-rbenv/pull/36): Use the ruby name as the definition to install ([@gsandie])
-- Pull request [#55](https://github.com/fnichol/chef-rbenv/pull/55): Fix some CHEF-3694 warnings when using with ruby_build ([@trinitronx])
+- Pull request [#36](https://github.com/fnichol/chef-rbenv/pull/36): Use the
+  ruby name as the definition to install ([@gsandie])
+- Pull request [#55](https://github.com/fnichol/chef-rbenv/pull/55): Fix some
+  CHEF-3694 warnings when using with ruby_build ([@trinitronx])
 
 ### New features
 
-- Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Allow setting environment vars per ruby install ([@jasherai])
-- Pull request [#37](https://github.com/fnichol/chef-rbenv/pull/37): Allows use `include_recipe("ruby_build")` instead of having to put it in the `run_list` ([@tjwallace])
-- Pull request [#42](https://github.com/fnichol/chef-rbenv/pull/42): Load rbenv environment after install ([@msaffitz])
-- Pull request [#62](https://github.com/fnichol/chef-rbenv/pull/62): Add Gentoo as supported platform ([@gentooboontoo])
-- Pull request [#46](https://github.com/fnichol/chef-rbenv/pull/46): Add a `definition_file` attribute to the `rbenv_ruby` resource to prevent continually trying to build a custom ruby when passed a build file name instead of a built-in definition ([@jf647])
-- Pull request [#60](https://github.com/fnichol/chef-rbenv/pull/60): Support `definition_file` in rubies definition ([@cyu])
-- Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75): Update testing support and add unit tests for existing resources ([@fnichol])
-- Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70): Support ruby 2.1.0 ([@WhyEee])
+- Pull request [#26](https://github.com/fnichol/chef-rbenv/pull/26): Allow
+  setting environment vars per ruby install ([@jasherai])
+- Pull request [#37](https://github.com/fnichol/chef-rbenv/pull/37): Allows use
+  `include_recipe("ruby_build")` instead of having to put it in the `run_list`
+  ([@tjwallace])
+- Pull request [#42](https://github.com/fnichol/chef-rbenv/pull/42): Load rbenv
+  environment after install ([@msaffitz])
+- Pull request [#62](https://github.com/fnichol/chef-rbenv/pull/62): Add Gentoo
+  as supported platform ([@gentooboontoo])
+- Pull request [#46](https://github.com/fnichol/chef-rbenv/pull/46): Add a
+  `definition_file` attribute to the `rbenv_ruby` resource to prevent
+  continually trying to build a custom ruby when passed a build file name
+  instead of a built-in definition ([@jf647])
+- Pull request [#60](https://github.com/fnichol/chef-rbenv/pull/60): Support
+  `definition_file` in rubies definition ([@cyu])
+- Pull request [#75](https://github.com/fnichol/chef-rbenv/pull/75): Update
+  testing support and add unit tests for existing resources ([@fnichol])
+- Pull request [#70](https://github.com/fnichol/chef-rbenv/pull/70): Support
+  ruby 2.1.0 ([@WhyEee])
 
 ## 0.7.0 (2012-11-21)
 
-- Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create /etc/profile.d on system-wide and add note for Mac. ([@fnichol])
-- Pull request [#20](https://github.com/fnichol/chef-rbenv/pull/20): Set an attribute to create profile.d for user install. ([@jtimberman])
-- Pull request [#12](https://github.com/fnichol/chef-rbenv/pull/12): Add name attribute to metadata. ([@jtimberman])
+- Issue [#14](https://github.com/fnichol/chef-rbenv/pull/14): Create
+  `/etc/profile.d` on system-wide and add note for Mac. ([@fnichol])
+- Pull request [#20](https://github.com/fnichol/chef-rbenv/pull/20): Set an
+  attribute to create profile.d for user install. ([@jtimberman])
+- Pull request [#12](https://github.com/fnichol/chef-rbenv/pull/12): Add name
+  attribute to metadata. ([@jtimberman])
 - Update foodcritic configuration and update .travis.yml. ([@fnichol])
 - Update Installation section of README (welcome Berkshelf). ([@fnichol])
 
 ## 0.6.10 (2012-05-18)
 
-- Pull request [#11](https://github.com/fnichol/chef-rbenv/pull/11): Add FreeBSD support. ([@jssjr])
+- Pull request [#11](https://github.com/fnichol/chef-rbenv/pull/11): Add FreeBSD
+  support. ([@jssjr])
 - Add other platform supports in metadata.rb and README. ([@fnichol])
 
 ## 0.6.8 (2012-05-06)
 
-- Add official hook resource `log[rbenv-post-init-*]` for inter-cookbook integration. ([@fnichol])
+- Add official hook resource `log[rbenv-post-init-*]` for inter-cookbook
+  integration. ([@fnichol])
 
 ## 0.6.6 (2012-05-04)
 
-- Fix FC022: Resource condition within loop may not behave as expected. ([@fnichol])
+- Fix FC022: Resource condition within loop may not behave as expected.
+  ([@fnichol])
 - Add plaform equivalents in default attrs (FC024). ([@fnichol])
 - Ensure update-java-alternatives is called before JRuby is built. ([@fnichol])
-- Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add /etc/profile.d/rbenv.sh support for user installs. ([@thoughtless])
+- Pull request [#8](https://github.com/fnichol/chef-rbenv/pull/8): Add
+  `/etc/profile.d/rbenv.sh` support for user installs. ([@thoughtless])
 - Add TravisCI to run Foodcritic linter. ([@fnichol])
-- Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README proofreading. ([@jdsiegel])
+- Pull request [#10](https://github.com/fnichol/chef-rbenv/pull/10): README
+  proofreading. ([@jdsiegel])
 - README updates. ([@fnichol])
 - Confirm debian platform support. ([@fnichol])
 
@@ -201,11 +260,16 @@ This file is used to list changes made in each version of the ruby_rbenv cookboo
 
 ## 0.6.2 (2012-02-22)
 
-- Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1), [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in RbenvRubygems to avoid libraries load ordering issues. ([@fnichol])
-- Pull request [#5](https://github.com/fnichol/chef-rbenv/pull/5): Include user setting in rehash calls. ([@magnetised])
-- Issue [#4](https://github.com/fnichol/chef-rbenv/issues/4): Fix rbenv/gems hash parsing. ([@fnichol])
+- Issues [#1](https://github.com/fnichol/chef-rbenv/issues/1),
+  [#2](https://github.com/fnichol/chef-rbenv/issues/2): Stub mixins in
+  RbenvRubygems to avoid libraries load ordering issues. ([@fnichol])
+- Pull request [#5](https://github.com/fnichol/chef-rbenv/pull/5): Include user
+  setting in rehash calls. ([@magnetised])
+- Issue [#4](https://github.com/fnichol/chef-rbenv/issues/4): Fix rbenv/gems
+  hash parsing. ([@fnichol])
 - Large formatting updates to README. ([@fnichol])
-- Add gh-pages branch for sectioned README at <https://fnichol.github.com/chef-rbenv>
+- Add gh-pages branch for sectioned README at
+  <https://fnichol.github.com/chef-rbenv>
 
 ## 0.6.0 (2011-12-21)
 

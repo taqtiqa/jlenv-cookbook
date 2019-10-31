@@ -1,0 +1,17 @@
+---
+name: jlenv
+title: jlenv resource defaults wrapper profile
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
+copyright_email: admin@taqtiqa.com
+license: Apache-2.0
+summary: Verifies jlenv resources correctly functions with defaults.
+version: 0.1.0
+inspec_version: "~> 3.0"
+supports:
+  - os-family: linux
+depends:
+  - name: system_install
+    path: test/integration/resources/system_install
+  - name: user_install
+    path: test/integration/resources/user_install

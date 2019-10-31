@@ -1,73 +1,61 @@
 ---
 version: 2.1
 orbs:
-  kitchen: sous-chefs/kitchen@1.0.1
+  kitchen: taqtiqa/kitchen@dev:1.3.5
+  cmds:    taqtiqa/commands@dev:0.1.14
+
+jobs:
+  ignite:
+    executor: kitchen/chef
+    steps:
+      - cmds/ignite-install:
+          version:
 
 workflows:
   kitchen:
     jobs:
-      - kitchen/danger:
-          name: danger
-          context: Danger
-      - kitchen/lint:
-          name: lint
-      - kitchen/dokken-single:
+    #  - ignite:
+    #      name: ignite
+    #   - kitchen/danger:
+    #       name: danger
+    #       context: Danger
+      - kitchen/mdlint:
+          name: mdlint
+      - kitchen/yamllint:
+          name: yamllint
+      - kitchen/dokken:
           suite: global
-          platform: debian-8
-          name: global-debian-8
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: debian-9
-          name: global-debian-9
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: centos-6
-          name: global-centos-6
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: centos-7
-          name: global-centos-7
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: ubuntu-1604
-          name: global-ubuntu-1604
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: ubuntu-1804
-          name: global-ubuntu-1804
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          suite: global
-          platform: opensuse-leap
-          name: global-opensuse-leap
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          name: system-install
-          suite: system-install
-          platform: centos-7
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          name: user-install
-          suite: user-install
-          platform: centos-7
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          name: gem
-          suite: gem
-          platform: centos-7
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          name: ruby-uninstall
-          suite: ruby-uninstall
-          platform: ubuntu-1804
-          requires: [lint, danger]
-      - kitchen/dokken-single:
-          name: custom-group
-          suite: custom-group-install
-          platform: centos-7
-          requires: [lint, danger]
+          name: global
+          requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, ignite]
+      # Kitchen/dokken-single runs a single Instance
+      # - kitchen/dokken-single:
+      #     suite: global-opensuse-leap
+      #     name: global-opensuse-leap
+      #     requires: [mdlint, yamllint]
+      #     requires: [mdlint, yamllint, danger]
+      # - kitchen/dokken-single:
+      #     name: system-install-centos-7
+      #     suite: system-install-centos-7
+      #     requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
+      # - kitchen/dokken-single:
+      #     name: user-install-centos-7
+      #     suite: user-install-centos-7
+      #     requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
+      # - kitchen/dokken-single:
+      #     name: pkg-centos-7
+      #     suite: pkg-centos-7
+      #     requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
+      # - kitchen/dokken-single:
+      #     name: julia-uninstall-ubuntu-1804
+      #     suite: julia-uninstall-ubuntu-1804
+      #     requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]
+      # - kitchen/dokken-single:
+      #     name: custom-group
+      #     suite: custom-group-install-centos-7
+      #     requires: [mdlint, yamllint]
+        #   requires: [mdlint, yamllint, danger]

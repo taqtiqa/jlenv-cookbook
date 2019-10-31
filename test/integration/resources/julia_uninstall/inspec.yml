@@ -1,0 +1,9 @@
+---
+name: jlenv
+title: jlenv julia_uninstall resourse profile
+maintainer: Taqtiqa LLC
+license: Apache-2.0
+summary: Verifies jlenv julia_uninstall resource correctly functions with defaults.
+version: 1.0.0
+supports:
+  - os-family: linux

@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "taqtiqa-mark",
+      "name": "Mark Van de Vyver",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1468258?v=4",
+      "profile": "http://blog.taqtiqa.com",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "jlenv-cookbook",
+  "projectOwner": "taqtiqa-mark",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}

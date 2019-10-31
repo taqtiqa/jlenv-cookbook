@@ -1,0 +1,10 @@
+---
+name: jlenv
+title: jlenv profile
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
+license: Apache-2.0
+summary: Verifies jlenv is installed correctly for a user & group
+version: 1.0.0
+supports:
+  - os-family: linux

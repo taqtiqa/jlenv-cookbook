@@ -1,0 +1,10 @@
+---
+name: jlenv
+title: jlenv rehash resource profile
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
+license: Apache-2.0
+summary: Verifies jlenv rehash resource is installed correctly system wide.
+version: 0.1.0
+supports:
+  - os-family: linux

@@ -1,0 +1,12 @@
+---
+name: jlenv
+title: jlenv global resource profile
+maintainer: Taqtiqa LLC
+copyright: Taqtiqa LLC
+copyright_email: admin@taqtiqa.com
+license: Apache-2.0
+summary: Verifies jlenv global resource correctly functions with defaults.
+version: 0.1.0
+inspec_version: "~> 2.1"
+supports:
+  - os-family: linux
