@@ -59,11 +59,8 @@ module GitExt
   end
 
   def clone
-    Chef::Log.warn "#{new_resource} before super existing_git_clone? is '#{existing_git_clone?}'"
-    Chef::Log.warn "#{new_resource} before super cwd is '#{cwd}'"
     converge_by("clone from #{repo_url} into #{cwd}") do
       remote = new_resource.remote
-
       clone_cmd = ["clone"]
       clone_cmd << "-o #{remote}" unless remote == "origin"
       clone_cmd << "--depth #{new_resource.depth}" if new_resource.depth
@@ -74,11 +71,7 @@ module GitExt
       logger.info "#{new_resource} cloning repo #{repo_url} to #{cwd}"
       git(clone_cmd, returns: [0, 128])
     end
-    Chef::Log.warn "#{new_resource} after clone existing_git_clone? is '#{existing_git_clone?}'"
-    Chef::Log.warn "#{new_resource} after clone cwd is '#{cwd}'"
     target_revision
-    Chef::Log.warn "#{new_resource.revision} after clone is '#{@target_revision}'"
-    @target_revision
   end
 
   def target_revision
@@ -88,16 +81,12 @@ module GitExt
         if sha_hash?(new_resource.revision)
           @target_revision = new_resource.revision
         else
-          Chef::Log.warn "#{new_resource} resolving reference"
-          Chef::Log.warn "#{new_resource} cwd is '#{cwd}'"
-          Chef::Log.warn "#{new_resource} existing_git_clone? is '#{existing_git_clone?}'"
           @target_revision = local_resolve_reference
         end
       end
   end
 
   def local_resolve_reference
-    Chef::Log.warn "#{new_resource} resolving remote reference"
     @resolved_reference = git_ref(rev_search_pattern)
     @resolved_reference
   end
@@ -123,18 +112,10 @@ module GitExt
                   live_stderr: StringIO.new,
                   live_stream: StringIO.new
                 )
-      puts hash.inspect
-      puts "="*80
-      puts hash.live_stdout.string
       break if hash.exitstatus == 0
-      puts hash.exitstatus.inspect
     end
     # This avoids stdout which is not available where no /dev/tty
     ref = hash.exitstatus == 0 ? hash.live_stdout.string : ''
-    puts "+"*80
-    puts ref.inspect
-    puts "~"*80
-    puts hash.live_stderr.string
     ref.chomp.split(' ').first
   end
 

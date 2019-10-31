@@ -10,4 +10,4 @@
 
 - [ ] All tests pass.
 - [ ] New functionality includes testing.
-- [ ] New functionality has been documented in the README if applicable
+- [ ] New functionality has been documented in the `docs/` folder (if applicable).

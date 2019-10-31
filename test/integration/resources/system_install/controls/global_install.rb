@@ -1,17 +1,50 @@
 # frozen_string_literal: true
 
-title 'Jlenv User Install Resource'
+title 'Jlenv System Install Resource'
 
 # Default user in resources is jovyan i.e. Jupyter assumption
-julia_users        ||= yaml(content: inspec.profile.file('users.yml'))['users']
-julia_user         ||= 'vagrant' 
-user_julia_version ||= julia_users[julia_user]['version']
+julia_users          ||= yaml(content: inspec.profile.file('users.yml'))['users']
+julia_user           ||= 'vagrant' 
+global_julia_version ||= julia_users[julia_user]['version']
 
 jlenv_global = command("sudo -H -u #{julia_user} bash -c 'source /etc/profile.d/jlenv.sh && jlenv global'")
 
-control 'User Installations' do
+# frozen_string_literal: true
+
+control 'Jlenv system install' do
+  title 'Jlenv should be installed system wide'
+
+  desc 'Jlenv should be installed and run successfully'
+  describe bash('source /etc/profile.d/jlenv.sh && jlenv versions --bare') do
+    its('exit_status') { should eq 0 }
+  end
+end
+
+control 'Jlenv system path' do
+  title 'Jlenv should be installed in the system wide location'
+
+  describe file('/usr/local/jlenv') do
+    it { should exist }
+    it { should be_directory }
+  end
+
+  # Issue: https://github.com/jlenv/jlenv-cookbook/issues/3
+  # Issue: https://github.com/jlenv/jlenv-cookbook/issues/4
+  # 
+  describe file('/etc/profile.d/jlenv.sh') do
+    its('type')  { should eq :file }
+    its('group') { should eq 'root' }
+    its('owner') { should eq 'root' }
+    its('mode')  { should cmp '0755' }
+    it { should     be_executable.by('others') }
+    it { should_not be_writable.by('others') }
+  end
+
+end
+
+control 'Global Installations' do
   impact 0.6
-  title 'Jlenv should be installed under the users home directory.'
+  title 'Jlenv should be installed under the .... directory.'
   desc  'Always specify environment variables, folders and permissions.'
   desc  'Rationale:', 'This ensures that there are no unexpected scripts run.' # Requires InSpec >=2.3.4
   tag   'julia', 'jlenv'
@@ -32,7 +65,7 @@ control 'User Installations' do
   #     HOME
   #     PATH
   #     )
-  #
+  # 
   #   env_vars.each do |e|
   #     describe os_env(e) do
   #       its('content') { should_not eq nil }
@@ -42,11 +75,16 @@ control 'User Installations' do
   #     end
   #   end
   # end
+  
+  describe bash('source /etc/profile.d/jlenv.sh && jlenv versions --bare') do
+    its('exit_status') { should eq 0 }
+    its('stdout') { should include(global_julia_version ) }
+  end
 
   describe jlenv_global do
     its('exit_status') { should eq 0 }
     its('stdout') { should include('system') }
-    its('stdout') { should_not include(user_julia_version) }
+    its('stdout') { should_not include(global_julia_version ) }
     its('stderr') { should eq '' }
   end
 
@@ -80,14 +118,14 @@ control 'User Installations' do
   end
 end
 
-control 'User Installations' do
-  title 'Jlenv should be installed locally'
+control 'Global Installations' do
+  title 'Jlenv should be installed globally'
 
-  desc "Can set user-space Julia version to #{user_julia_version}"
+  desc "Can set global Julia version toglobal}"
   jlenv_versions = command("sudo -H -u #{julia_user} bash -c 'source /etc/profile.d/jlenv.sh && jlenv versions --bare'")
   describe jlenv_versions do
     its('exit_status') { should eq 0 }
-    its('stdout') { should_not include(user_julia_version) }
+    its('stdout') { should_not include(global_julia_version) }
     its('stderr') { should eq '' }
   end
 

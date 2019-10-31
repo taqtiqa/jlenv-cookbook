@@ -23,7 +23,7 @@
 # limitations under the License.
 #
 
-# Check for the user or system global verison
+# Check for the user or system global version
 # If we pass in a user check that users global
 
 provides :jlenv_global
